@@ -1,0 +1,29 @@
+Module 1
+
+Distributed File Systems
+    When you can't store all the data in memory due to its size that when DM (classical DM) comes in.
+
+    A DFS is a file system that stores data across a cluster (storing multiple copies of data).
+
+    A typical pattern consists of writing the data once, reading it multiple times and appending to it occasionally.
+
+    The replicas of the same chunk are never stored on the same chunk server/ node but rather spread across multiple nodes.
+
+    We try keep replicas across different racks in order to handle switch failures.
+
+
+Map-Reduce Programming Model
+    Map Reduce Programming Model
+        Map
+            The Map method takes a set of key value pairs and produces a set of intermediate key value pairs.
+            There is one map call for each input key-value pair.
+
+        Reduce
+            The reduce method takes an intermediate key-value group.
+            The intermediate key-value group consists of a key and a set of values for that key.
+            The output can consist of zero, one or more multiple key-value pairs where the key is same as the input key but the value is obtained by combining the input values in some manner.
+
+        The system ships multiple instances of the same key from various map nodes (sorted in group/ shuffle step) to the same reduce node.
+        The Map reduce is designed to work on sequential reads on disks (instead of random access/ reads)
+
+
