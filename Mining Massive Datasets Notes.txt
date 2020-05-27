@@ -1,29 +1,115 @@
-Module 1
+Module 1 : DFS and Map Reduce
 
-Distributed File Systems
-    When you can't store all the data in memory due to its size that when DM (classical DM) comes in.
+    Distributed File Systems
+        When you can't store all the data in memory due to its size that when DM (classical DM) comes in.
 
-    A DFS is a file system that stores data across a cluster (storing multiple copies of data).
+        A DFS is a file system that stores data across a cluster (storing multiple copies of data).
 
-    A typical pattern consists of writing the data once, reading it multiple times and appending to it occasionally.
+        A typical pattern consists of writing the data once, reading it multiple times and appending to it occasionally.
 
-    The replicas of the same chunk are never stored on the same chunk server/ node but rather spread across multiple nodes.
+        The replicas of the same chunk are never stored on the same chunk server/ node but rather spread across multiple nodes.
 
-    We try keep replicas across different racks in order to handle switch failures.
+        We try keep replicas across different racks in order to handle switch failures.
 
 
-Map-Reduce Programming Model
-    Map Reduce Programming Model
-        Map
-            The Map method takes a set of key value pairs and produces a set of intermediate key value pairs.
-            There is one map call for each input key-value pair.
+    Map-Reduce Programming Model
+        Map Reduce Programming Model
+            Map
+                The Map method takes a set of key value pairs and produces a set of intermediate key value pairs.
+                There is one map call for each input key-value pair.
 
-        Reduce
-            The reduce method takes an intermediate key-value group.
-            The intermediate key-value group consists of a key and a set of values for that key.
-            The output can consist of zero, one or more multiple key-value pairs where the key is same as the input key but the value is obtained by combining the input values in some manner.
+            Reduce
+                The reduce method takes an intermediate key-value group.
+                The intermediate key-value group consists of a key and a set of values for that key.
+                The output can consist of zero, one or more multiple key-value pairs where the key is same as the input key but the value is obtained by combining the input values in some manner.
 
-        The system ships multiple instances of the same key from various map nodes (sorted in group/ shuffle step) to the same reduce node.
-        The Map reduce is designed to work on sequential reads on disks (instead of random access/ reads)
+            The system ships multiple instances of the same key from various map nodes (sorted in group/ shuffle step) to the same reduce node.
+            The Map reduce is designed to work on sequential reads on disks (instead of random access/ reads)
+
+            Mainly steps:
+                In the Map step, you take a Big a document which is divided into chunks and you run a Map process on each chunk.
+                The map process go through each record in that chunk and outputs an intermediate key value pairs for each vector in that, in that chunk.
+
+                Second set step which is a group by step you group by key. You you bring together all the values for, for the same key.
+
+                Third step, is a reduce step. You apply a reducer to each intermediate key value pair set and you create a final output.
+
+    Scheduling and Data Flow
+        Once the intermediate key value pairs are produced, the underlying system, the Map-Reduce system uses a partitioning function which is just a hash function. So the the the Map-Reduce system applies a hash function to each intermediate key value.And the hash function will tell the Map-Reduce system which,reduce node to send that key value pair to.Right, this ensures that all all the, the same key values,whether they are map task 1, 2, or 3 end up being sent to the same reduce task.Right? So, in this case the key key 4.Regardless of where it started from, whether at 1, 2, or 3.Always end up at reduce task 1.And the key, key 1 always ends up at reduce task 2.
+
+        So, whenever possible, intermediate results are actually stored in the local file system of the Map and Reduced workers, ended up being stored in the distributed file system to avoid more network traffic.
+
+
+    Combiners and Partition Functions
+        The input to a combiner is a key and a list of values and the output is a single value.
+        Combine function works iff reduce function is associative and commutative.
+
+
+Module 2: Page Rank
+
+    Column stochastic matrix : This means that every column in our matrix, sums to 1.
+
+    A rank vector is an eigen-vector of the stochastic web matrix M and another important fact is that it is a principal eigenvector.
+    Which means that it corresponds to the eigenvalue with value 1.
+    In fact the large, largest eigenvalue of M is once, is, is 1 exactly because M is column stochastic. Why is that the case? That's the case because vector r has a unit length.
+    Meaning its coordinate sum are non, are non, are non-negative and they sum to 1. And each column of M also sums to 1. So M times r will be the, the value of that product, of that dot product, will be at most at most 1.
+
+    Random walk interpretation : So basically we will see that page rank scores are equivalent to a probability distribution of our random walker in a graph.
+    distribution of where the random walker is either time t plus 1 is simply our matrix M times the probability distribution where the random walker was at time t.
+
+    Random walks are really called Markov processes, or first order Mark, order Markov processes, because basically they have very little, very little history.
+    And the central, the result from the Markov processes or random walk literature is that under certain conditions,
+    basically conditions under matrix M, the stationary distribution is unique, and it will eventually be reached no matter what is the, the initial probability dis, distribution at the time t equal 0.
+
+
+    The Google Formulation
+
+        Spider Trap Problem
+            basically the idea is that here out-links from webpages can form a small group. So the idea is that the, the, if you think of a random walk interpretation of PageRank, basically the random walker would get trapped in a small part of the web graph, and then, the random walker will get kind of indefinitely stuck in that part.
+
+            So the way Google solves the solution to the spider traps is to say that each step the random walker has two choices. With some para with some parameter beta, with some probability beta, the random walker will follow the, the outgoing link at random. So the same as the random walker was doing before, but with some remaining probability, the random walker will randomly jump to some other random web page.
+
+        Dead End Problem
+            The idea is that basically whenever our web page receives its PageRank score and there is no way for our to pass this PageRank score to anyone else because it has no out-links, this PageRank score will leak out from our system. And at the end, the PageRank scores of all of the web pages will be 0
+
+            So, the, the way we solve the problem is to basically say the following. What we say is that if a node has no outgoing links, then when we reach that node, we will teleport with probability 1. So this basically means that for example whenever, whenever we reach node m we will always jump out of it random uniformly at random and tele, teleport somewhere else. So if you think, what do this to our stochastic matrix m and the column corresponding to node m. What happens is that basically now column 1 will have, will have values of 1 over 3 for all, all the, all its entries.
+
+
+    How does teleport solves our problem
+
+        Dead Ends
+            The way we can think about this in terms of equations is that basically we say our, we define a new matrix A where we take our previous matrix M, and now we, we introduce two pieces of notations here. First I have this vector A where the i-th component of vector A equals 1 if node I has out degree 0, if node I is a dead end, and otherwise if it has value 0. And then this vector E is just vector of all ones, so it's a vector where every component has a value of 1. So what we basic, what this basically means is we take matrix M and wherever there is a column with in the matrix M that has all 0's, we replace that with 1 over the out degree of, of that given node.
+            So this is what we did now, is basically a random, a random teleportations. What they do, they take our matrix m that cannot be stochastic in the graph because it dead ends and transform into a new matrix A that is now stochastic.
+
+        Irreducible : we say that m is irreducible when from, from any state there is a non-zero probability of going to any other state in the, in the network.
+
+
+    How we Really Compute PageRank
+
+
+Module 3 : Locality-Sensitive Hashing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
