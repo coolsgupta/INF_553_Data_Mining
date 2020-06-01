@@ -12,7 +12,8 @@ class TaskNoSpark:
     def __init__(self):
         try:
             self.argv = sys.argv
-            path_data_dir = '../resource/asnlib/publicdata/'
+            #path_data_dir = '../resource/asnlib/publicdata/'
+            path_data_dir = ''
 
             file = open(path_data_dir + self.argv[1], 'r')
             reviews_data = []
@@ -100,7 +101,8 @@ class TaskWithSpark:
         try:
             self.sc = SparkContext('local[8]', 'task2')
             self.argv = sys.argv
-            path_dir = '../resource/asnlib/publicdata/'
+            #path_dir = '../resource/asnlib/publicdata/'
+            path_dir = ''
             reviews_txt = self.sc.textFile(path_dir + self.argv[1])
             business_txt = self.sc.textFile(path_dir + self.argv[2])
             self.reviews_data = reviews_txt.map(lambda x: json.loads(x))
@@ -122,14 +124,14 @@ class TaskWithSpark:
         joined_rdd = categories_business_map.join(business_review_map)
         category_ratings_map = joined_rdd.map(lambda x: x[1]).groupByKey().map(lambda x: (x[0], list(x[1])))
         average_ratings = category_ratings_map.mapValues(lambda x: sum(x) / len(x)).sortBy(lambda x: (-x[1], x[0]))
-        return average_ratings.take(int(self.argv[5]))
+        return average_ratings
 
     def get_results(self, average_ratings):
         result = []
-        for record in category_business_map:
+        for record in average_ratings.take(int(self.argv[5])):
             result.append([record[0], record[1]])
 
-        return {"result": result.sort(key=lambda x: (-x[1], x[0]))}
+        return {"result": result}
 
     def write_results(self, final_result):
         with open(self.argv[3], 'w') as write_file:

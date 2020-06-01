@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assignment 1/task3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment 1/Task_2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 1/Task_2.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment 1/task2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 1/task2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment 1/Task_3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 1/Task_3.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment 1/task1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment 1/task1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +95,7 @@
       <workItem from="1590817553650" duration="2138000" />
       <workItem from="1590824781138" duration="352000" />
       <workItem from="1590825170991" duration="24170000" />
-      <workItem from="1590944317242" duration="18214000" />
+      <workItem from="1590944317242" duration="31573000" />
     </task>
     <servers />
   </component>
@@ -151,9 +154,10 @@
     </state>
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1590825187561" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1590255047008" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590427993724">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="498" y="178" width="538" height="538" key="search.everywhere.popup" timestamp="1590987460746">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="498" y="178" width="538" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1590987460746" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590427993724" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

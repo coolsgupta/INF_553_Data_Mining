@@ -48,5 +48,6 @@ if __name__ == '__main__':
 
     with open(argv[2], 'w') as results_file:
         results_file.write(json.dumps(results))
+        results_file.close()
 
 
