@@ -7,8 +7,8 @@ findspark.init()
 
 
 def hash_partition_business_id(id):
-    return sum(list(map(ord, id))) % argv[4]
-    # return ord(id[0])
+    # return sum(list(map(ord, id))) % argv[4]
+    return ord(id[0]) % argv[4]
 
 
 if __name__ == '__main__':
