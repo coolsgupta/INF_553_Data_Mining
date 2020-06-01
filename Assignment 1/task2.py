@@ -3,6 +3,7 @@ import logging
 import traceback
 import findspark
 findspark.init()
+import sys
 
 from pyspark import SparkContext
 
@@ -10,14 +11,15 @@ from pyspark import SparkContext
 class TaskNoSpark:
     def __init__(self):
         try:
+            self.argv = sys.argv
             path_data_dir = 'D:\\sachin\\MS\\USC\\Course Work\\INF 553 Data Mining\\Assignments\\Assignment 1\\asnlib\\publicdata\\'
 
-            file = open(path_data_dir + 'review.json', 'r', encoding='utf-8')
+            file = open(self.argv[1], 'r', encoding='utf-8')
             reviews_data = []
             for record in file:
                     reviews_data.append(json.loads(record))
 
-            file = open(path_data_dir + 'business.json', 'r', encoding='utf-8')
+            file = open(self.argv[2], 'r', encoding='utf-8')
             business_data = []
             for record in file:
                     business_data.append(json.loads(record))
@@ -84,7 +86,12 @@ class TaskNoSpark:
         for category in category_business_map:
             result.append([category, category_business_map[category]['average_rating']])
 
-        return {"result": result.sort(key=lambda x: (-x[1],x[0]))}
+        return {"result": result.sort(key=lambda x: (-x[1],x[0]))[:self.argv[5]]}
+
+    def write_results(self, final_result):
+        with open(self.argv[3], 'w') as write_file:
+            write_file.close()
+            write_file.write(json.dumps(final_result))
 
 
 class TaskWithSpark:
@@ -113,7 +120,7 @@ if __name__ == '__main__':
             category_business_map=category_business_map,
             average_rating_map=average_rating_map
         )
-        results = task_no_spark_obj.get_results(category_business_map)
+        task_no_spark_obj.write_results(task_no_spark_obj.get_results(category_business_map))
 
     except Exception as e:
         logging.error(traceback.format_exc())
