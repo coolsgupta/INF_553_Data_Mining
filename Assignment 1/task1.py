@@ -42,9 +42,8 @@ if __name__ == '__main__':
 
     stopwords_list = [x.strip().lower() for x in f_stopwords.split()]
     stopwords_list.extend(["(", "[", ",", ".", "!", "?", ":", ";", "]", ")"])
-    results['E'] = words_count_rdd.filter(lambda x: x[0] not in stopwords_list).sortBy(lambda x: x[1],
-                                                                                       ascending=False).map(
-        lambda x: x[0]).take(int(argv[5]))
+    results['E'] = words_count_rdd.filter(lambda x: x[0] not in stopwords_list).sortBy(
+        lambda x: x[1], ascending=False).map(lambda x: x[0]).take(int(argv[5]))
 
     with open(argv[2], 'w') as results_file:
         results_file.write(json.dumps(results))
