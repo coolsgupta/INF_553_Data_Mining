@@ -49,4 +49,3 @@ if __name__ == '__main__':
         results_file.write(json.dumps(results))
         results_file.close()
 
-
