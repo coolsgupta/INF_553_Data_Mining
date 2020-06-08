@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_2/task_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_2/task_1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +63,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_2/task_1.py" />
+      <option name="SCRIPT_NAME" value="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_2\task1.py" />
       <option name="PARAMETERS" value="1 4 small1.csv results_b1.txt" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -95,7 +94,7 @@
       <workItem from="1590944317242" duration="35207000" />
       <workItem from="1591077411354" duration="3989000" />
       <workItem from="1591215498412" duration="8669000" />
-      <workItem from="1591409647563" duration="27478000" />
+      <workItem from="1591409647563" duration="28075000" />
     </task>
     <servers />
   </component>
