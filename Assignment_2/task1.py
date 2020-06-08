@@ -60,24 +60,24 @@ def get_original_frequent_sets(original_baskets, candidate_list):
 def write_results(result_candidates, result_frequent_itemsets):
     with open(argv[4], 'w') as results_file:
         results_file.write('Candidates:\n')
-        output = ''
+        output = []
         for single_cad in sorted(result_candidates[0]):
-            output += '(\'' + str(single_cad) + '\'),'
+            output.append('(\'' + str(single_cad) + '\')')
 
-        results_file.write(output[:-1] + '\n\n')
+        results_file.write(','.join(output) + '\n\n')
 
         for cand_set in result_candidates[1:]:
-            results_file.write(str(sorted(cand_set))[1:-1] + '\n\n')
+            results_file.write(','.join(map(str, (sorted(cand_set)))) + '\n\n')
 
         results_file.write('Frequent Itemsets:\n')
-        output = ''
+        output = []
         for single_item in sorted(result_frequent_itemsets[0]):
-            output += '(\'' + str(single_item) + '\'),'
+            output.append('(\'' + str(single_item) + '\')')
 
-        results_file.write(output[:-1] + '\n\n')
+        results_file.write(','.join(output) + '\n\n')
 
         for freq_set in result_frequent_itemsets[1:]:
-            results_file.write(str(sorted(freq_set))[1:-1] + '\n\n')
+            results_file.write(','.join(map(str, (sorted(freq_set)))) + '\n\n')
 
 
 if __name__ == '__main__':
