@@ -3,7 +3,7 @@ import findspark
 findspark.init()
 from pyspark import SparkContext, SparkConf
 import sys
-
+import time
 
 def get_original_itemset_counts(basket):
     if set_size > 1:
@@ -62,9 +62,9 @@ def write_results(result_candidates, result_frequent_itemsets):
         results_file.write('Candidates:\n')
         output = ''
         for single_cad in sorted(result_candidates[0]):
-            output += '(' + str(single_cad) + '),'
+            output += '(\'' + str(single_cad) + '\'),'
 
-        results_file.write(output[-1])
+        results_file.write(output[:-1] + '\n\n')
 
         for cand_set in result_candidates[1:]:
             results_file.write(str(sorted(cand_set))[1:-1] + '\n\n')
@@ -72,15 +72,16 @@ def write_results(result_candidates, result_frequent_itemsets):
         results_file.write('Frequent Itemsets:\n')
         output = ''
         for single_item in sorted(result_frequent_itemsets[0]):
-            output += '(' + str(single_item) + '),'
+            output += '(\'' + str(single_item) + '\'),'
 
-        results_file.write(output[-1])
+        results_file.write(output[:-1] + '\n\n')
 
         for freq_set in result_frequent_itemsets[1:]:
             results_file.write(str(sorted(freq_set))[1:-1] + '\n\n')
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     conf = SparkConf()
     conf.set("spark.driver.memory", "4g")
     conf.set("spark.executor.memory", "4g")
@@ -123,3 +124,5 @@ if __name__ == '__main__':
         set_size += 1
 
     write_results(result_candidates=candidates, result_frequent_itemsets=frequent_itemsets)
+    # output 1
+    print("Duration: {:.2f}".format(time.time() - start_time))
