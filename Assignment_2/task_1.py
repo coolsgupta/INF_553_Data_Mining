@@ -4,88 +4,102 @@ findspark.init()
 from pyspark import SparkContext, SparkConf
 import sys
 
-class SON:
-    def __init__(self, argv):
-        conf = SparkConf()
-        conf.set("spark.driver.memory", "4g")
-        conf.set("spark.executor.memory", "4g")
-        conf.setMaster('local[8]')
-        conf.setAppName('Assignment_2')
 
-        self.sc = SparkContext.getOrCreate(conf)
-        self.argv = argv
+def get_original_itemset_counts(basket):
+    if set_size > 1:
+        sets = itertools.combinations(basket[1], set_size)
 
-        data_path = 'asnlib/publicdata/'
-        data = self.sc.textFile(data_path + self.argv[3])
-        data = data.map(lambda x: x.split(',')).map(lambda x: (x[0], x[1]))
-        header = data.first()
-        self.raw_data = data.filter(lambda x: x != header)
+    else:
+        sets = basket[1]
 
-        if self.argv[1] == '2':
-            self.raw_data = self.raw_data.map(lambda x: (x[1],x[0]))
+    return list(map(lambda x: (x, 1), sets))
 
-        self.baskets = self.raw_data.distinct().groupByKey()
-        self.baskets = self.baskets.map(lambda x: (x[0], list(x[1])))
-        print(self.baskets.collect())
-        self.support = int(self.argv[2])
-        self.partial_support = self.support//self.baskets.getNumPartitions()
 
-    def get_partition_itemset_candidates(self, bucket, size_of_set):
-        items = {}
-        for basket in bucket:
-            if len(basket[1]) < size_of_set:
-                continue
+def get_partition_itemset_candidates(bucket):
+    items = {}
+    for basket in bucket:
+        if len(basket[1]) < set_size:
+            continue
 
-            sets = itertools.combinations(basket[1], size_of_set)
-            for item in sets:
-                if item not in items:
-                    items[item] = 0
+        if set_size > 1:
+            sets = itertools.combinations(basket[1], set_size)
 
-                items[item] += 1
+        else:
+            sets = basket[1]
 
-        for item in items:
-            if items[item] >= self.partial_support:
-                yield item
+        for item in sets:
+            if item not in items:
+                items[item] = 0
 
-    def get_original_itemset_counts(self, basket, size_of_set):
-        sets = itertools.combinations(basket[1], size_of_set)
-        return list(map(lambda x: (x, 1), sets))
+            items[item] += 1
 
-    def get_candidates_list(self, size_of_sets):
-        candidate_sets = self.baskets.mapPartitions(lambda x: self.get_partition_itemset_candidates(x, size_of_sets))
-        candidate_sets_list = candidate_sets.distinct().collect()
-        return candidate_sets_list
+    print(items)
+    for item in items:
+        if items[item] >= partial_support:
+            yield item
 
-    def get_original_frequent_pairs(self, candidate_list, size_of_sets):
-        original_freq_sets = self.baskets\
-            .flatMap(lambda x: self.get_original_itemset_counts(x, size_of_sets)) \
-            .filter(lambda x: x[0] in candidate_list)\
-            .reduceByKey(lambda a, b: a + b)\
-            .filter(lambda x: x[1] >= self.support)\
-            .collect()
 
-        return original_freq_sets
+def get_candidates_list(candidate_baskets):
+    candidate_sets = candidate_baskets.mapPartitions(get_partition_itemset_candidates)
+    candidate_sets_list = candidate_sets.distinct().collect()
+    return candidate_sets_list
 
-    def write_results(self, result_candidates, result_frequent_itemsets):
-        with open(self.argv[4]) as results_file:
-            results_file.write('Candidates:\n')
-            results_file.writelines(result_candidates)
 
-            results_file.write('\nFrequent Itemsets:\n')
-            results_file.writelines(result_frequent_itemsets)
+def get_original_frequent_sets(original_baskets, candidate_list):
+    original_freq_sets = original_baskets \
+        .flatMap(get_original_itemset_counts) \
+        .filter(lambda x: x[0] in candidate_list) \
+        .reduceByKey(lambda a, b: a + b) \
+        .filter(lambda x: x[1] >= support)\
+        .map(lambda x: (x[0]))\
+        .collect()
+
+    return original_freq_sets
+
+
+def write_results(result_candidates, result_frequent_itemsets):
+    with open(argv[4], 'w') as results_file:
+        results_file.write('Candidates:\n')
+        for cand_set in result_candidates:
+            results_file.write(str(sorted(cand_set))[1:-1] + '\n\n')
+
+        results_file.write('Frequent Itemsets:\n')
+        for freq_set in result_frequent_itemsets:
+            results_file.write(str(sorted(freq_set))[1:-1] + '\n\n')
 
 
 if __name__ == '__main__':
-    task_obj = SON(sys.argv)
+    conf = SparkConf()
+    conf.set("spark.driver.memory", "4g")
+    conf.set("spark.executor.memory", "4g")
+    conf.setMaster('local[8]')
+    conf.setAppName('Assignment_2')
+
+    sc = SparkContext.getOrCreate(conf)
+    argv = sys.argv
+
+    data_path = 'asnlib/publicdata/'
+    data = sc.textFile(data_path + argv[3]).map(lambda x: x.split(',')).map(lambda x: (x[0], x[1]))
+    header = data.first()
+    raw_data = data.filter(lambda x: x != header)
+
+    if argv[1] == '2':
+        raw_data = raw_data.map(lambda x: (x[1], x[0]))
+
+    baskets = raw_data.distinct().groupByKey().map(lambda x: (x[0], sorted(list(x[1]))))
+    print(baskets.collect())
+    support = int(argv[2])
+    partial_support = support // baskets.getNumPartitions()
+
     candidates = []
     frequent_itemsets = []
     set_size = 1
     while True:
-        current_candidates = task_obj.get_candidates_list(size_of_sets=set_size)
+        current_candidates = get_candidates_list(candidate_baskets=baskets)
         # current_candidates = []
-        current_frequent_itemsets = task_obj.get_original_frequent_pairs(
-            candidate_list=current_candidates,
-            size_of_sets=set_size
+        current_frequent_itemsets = get_original_frequent_sets(
+            original_baskets=baskets,
+            candidate_list=current_candidates
         )
         if not current_frequent_itemsets:
             break
@@ -94,4 +108,4 @@ if __name__ == '__main__':
         frequent_itemsets.append(current_frequent_itemsets)
         set_size += 1
 
-    task_obj.write_results(result_candidates=candidates, result_frequent_itemsets=frequent_itemsets)
+    write_results(result_candidates=candidates, result_frequent_itemsets=frequent_itemsets)
