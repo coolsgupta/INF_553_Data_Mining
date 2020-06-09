@@ -108,15 +108,16 @@ if __name__ == '__main__':
     set_size = 1
     while True:
         current_candidates = get_candidates_list(candidate_baskets=baskets)
-        # current_candidates = []
+        candidates.append(current_candidates)
+        current_candidates_dict = dict.fromkeys(current_candidates, 1)
+
         current_frequent_itemsets = get_original_frequent_sets(
             original_baskets=baskets,
-            candidate_list=current_candidates
+            candidate_list=current_candidates_dict
         )
         if not current_frequent_itemsets:
             break
 
-        candidates.append(current_candidates)
         frequent_itemsets.append(current_frequent_itemsets)
 
         set_size += 1
