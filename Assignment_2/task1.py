@@ -33,7 +33,7 @@ def get_partition_itemset_candidates(bucket):
 
             items[item] += 1
 
-    print(items)
+    # print(items)
     for item in items:
         if items[item] >= partial_support:
             yield item
@@ -79,7 +79,6 @@ def write_results(result_candidates, result_frequent_itemsets):
         for freq_set in result_frequent_itemsets[1:]:
             results_file.write(','.join(map(str, (sorted(freq_set)))) + '\n\n')
 
-
 if __name__ == '__main__':
     start_time = time.time()
     conf = SparkConf()
@@ -100,7 +99,7 @@ if __name__ == '__main__':
         raw_data = raw_data.map(lambda x: (x[1], x[0]))
 
     baskets = raw_data.distinct().groupByKey().map(lambda x: (x[0], sorted(list(x[1]))))
-    print(baskets.collect())
+    # print(baskets.collect())
     support = int(argv[2])
     partial_support = support // baskets.getNumPartitions()
 
@@ -114,12 +113,11 @@ if __name__ == '__main__':
             original_baskets=baskets,
             candidate_list=current_candidates
         )
-        if not current_candidates:
+        if not current_frequent_itemsets:
             break
 
         candidates.append(current_candidates)
-        if current_frequent_itemsets:
-            frequent_itemsets.append(current_frequent_itemsets)
+        frequent_itemsets.append(current_frequent_itemsets)
 
         set_size += 1
 
