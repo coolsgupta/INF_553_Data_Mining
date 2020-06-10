@@ -158,7 +158,7 @@ if __name__ == '__main__':
     sc = SparkContext.getOrCreate(conf)
 
     # get args
-    case = int(sys.argv[1])
+    threshold = int(sys.argv[1])
     support = int(sys.argv[2])
     input_file = sys.argv[3]
     result_file = sys.argv[4]
@@ -168,10 +168,7 @@ if __name__ == '__main__':
     header = data.first()
     raw_data = data.filter(lambda x: x != header)
 
-    if case == 2:
-        raw_data = raw_data.map(lambda x: (x[1], x[0]))
-
-    baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1]))))
+    baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1])))).filter(lambda x: len(x) >= threshold)
     baskets = sc.parallelize(baskets.collect(), 2)
     total_baskets_count = baskets.count()
 
