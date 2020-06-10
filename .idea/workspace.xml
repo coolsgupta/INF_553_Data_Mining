@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_2/.ipynb_checkpoints/check-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_2/.ipynb_checkpoints/check-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_2/jupyter_test_results" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment_2/task2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_2/task2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +46,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_2\asnlib\publicdata" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_1" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment 1" />
     </key>
@@ -69,7 +66,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_2/task2.py" />
-      <option name="PARAMETERS" value="1 4 asnlib/publicdata/small2.csv results_test_t2.txt" />
+      <option name="PARAMETERS" value="1 4 asnlib/publicdata/small1.csv results_test_t1.txt" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -101,7 +98,7 @@
       <workItem from="1591215498412" duration="8669000" />
       <workItem from="1591409647563" duration="38467000" />
       <workItem from="1591667671895" duration="11975000" />
-      <workItem from="1591724461449" duration="22184000" />
+      <workItem from="1591724461449" duration="25420000" />
     </task>
     <servers />
   </component>
@@ -109,10 +106,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591754131855">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591756952368">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754131855" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591756952368" />
     <state x="532" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591075061313">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -126,45 +123,45 @@
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754130568" />
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590612222240" />
-    <state width="1493" height="302" key="GridCell.Tab.0.bottom" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.0.bottom" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="509" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591625644807" />
-    <state width="1493" height="302" key="GridCell.Tab.0.center" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.0.center" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="509" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591625644806" />
-    <state width="1493" height="302" key="GridCell.Tab.0.left" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.0.left" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="509" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591625644805" />
-    <state width="1493" height="302" key="GridCell.Tab.0.right" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.0.right" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="509" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591625644806" />
-    <state width="1493" height="302" key="GridCell.Tab.1.bottom" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.1.bottom" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="169" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591625591612" />
-    <state width="1493" height="302" key="GridCell.Tab.1.center" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.1.center" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="169" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591625591612" />
-    <state width="1493" height="302" key="GridCell.Tab.1.left" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.1.left" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="169" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591625591612" />
-    <state width="1493" height="302" key="GridCell.Tab.1.right" timestamp="1591754595190">
+    <state width="1493" height="302" key="GridCell.Tab.1.right" timestamp="1591757845278">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591754595190" />
+    <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591757845278" />
     <state width="1493" height="169" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591625591612" />
     <state x="370" y="110" key="SettingsEditor" timestamp="1591566370305">
       <screen x="0" y="0" width="1536" height="824" />
@@ -206,7 +203,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_2/task2.py</url>
-          <line>152</line>
+          <line>175</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -214,11 +211,16 @@
           <line>266</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_2/task2.py</url>
+          <line>112</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1591754548906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
+    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1591757804499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
     <SUITE FILE_PATH="coverage/Assignments$task1.coverage" NAME="INF Coverage Results" MODIFIED="1591574554770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
   </component>
 </project>

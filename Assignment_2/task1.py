@@ -1,64 +1,122 @@
+import time
 import itertools
 import findspark
+
 findspark.init()
-from pyspark import SparkContext, SparkConf
+from pyspark import SparkContext, SparkConf, StorageLevel
 import sys
-import time
-
-def get_original_itemset_counts(basket):
-    if set_size > 1:
-        sets = itertools.combinations(basket[1], set_size)
-
-    else:
-        sets = basket[1]
-
-    return list(map(lambda x: (x, 1), sets))
 
 
-def get_partition_itemset_candidates(bucket):
-    items = {}
+def get_all_candidates(bucket):
+    all_candidates = []
+    singleton_count_map = {}
+    candidate_singletons = []
+    pair_count_map = {}
+    candidate_pairs = []
+
     for basket in bucket:
-        if len(basket[1]) < set_size:
-            continue
+        basket.sort()
+        for item in basket:
+            if item not in singleton_count_map:
+                singleton_count_map[item] = 0
+            singleton_count_map[item] += 1
 
-        if set_size > 1:
-            sets = itertools.combinations(basket[1], set_size)
+        for pair in itertools.combinations(basket, 2):
+            if frozenset(pair) not in pair_count_map:
+                pair_count_map[frozenset(pair)] = 0
+            pair_count_map[frozenset(pair)] += 1
 
+    for item in singleton_count_map:
+        if singleton_count_map[item] >= partition_support:
+            candidate_singletons.append((item))
+
+    all_candidates.append([1, candidate_singletons])
+
+    for pair in itertools.combinations(candidate_singletons, 2):
+        pair = frozenset(pair)
+        if pair in pair_count_map and pair_count_map[pair] >= partition_support:
+            candidate_pairs.append(pair)
+
+    all_candidates.append([2, candidate_pairs])
+
+    set_size = 3
+    previous_candidates = candidate_pairs
+
+    while 1:
+        current_candidates = []
+        for i, subcand_1 in enumerate(previous_candidates):
+            for subcand_2 in previous_candidates[i + 1:]:
+                superset_cand = subcand_1.union(subcand_2)
+
+                if len(superset_cand) == set_size and superset_cand not in current_candidates:
+                    current_candidates.append(superset_cand)
+
+        supported_candidates = []
+        for cand_item_set in current_candidates:
+            part_sup_cand = 0
+            for basket in bucket:
+                if cand_item_set.issubset(set(basket)):
+                    part_sup_cand += 1
+
+                    if part_sup_cand >= partition_support:
+                        supported_candidates.append(cand_item_set)
+
+        for cand_item_set in supported_candidates:
+            for subset in itertools.combinations(cand_item_set, set_size - 1):
+                subset = set(subset)
+                if subset not in all_candidates[set_size - 2][1]:
+                    supported_candidates.remove(cand_item_set)
+
+        previous_candidates = supported_candidates
+        set_size += 1
+
+        if not previous_candidates:
+            break
+        all_candidates.append((set_size, supported_candidates))
+
+    for cand_set in all_candidates:
+        if cand_set[0] == 1:
+            candidates = [tuple((x,)) for x in cand_set[1]]
         else:
-            sets = basket[1]
-
-        for item in sets:
-            if item not in items:
-                items[item] = 0
-
-            items[item] += 1
-
-    # print(items)
-    for item in items:
-        if items[item] >= partial_support:
-            yield item
+            candidates = [tuple(sorted(x)) for x in cand_set[1]]
+        yield ((cand_set[0], candidates))
 
 
-def get_candidates_list(candidate_baskets):
-    candidate_sets = candidate_baskets.mapPartitions(get_partition_itemset_candidates)
-    candidate_sets_list = candidate_sets.distinct().collect()
-    return candidate_sets_list
+def get_original_itemset_counts(basket, all_candidates):
+    for candidate_set in all_candidates:
+        for candidate in candidate_set:
+            # for basket in bucket:
+            if set(candidate).issubset(basket):
+                yield (candidate, 1)
+
+
+def get_candidates_list(all_baskets):
+    all_candidates = all_baskets \
+        .mapPartitions(lambda x: get_all_candidates(list(x))) \
+        .reduceByKey(lambda a, b: a + b) \
+        .map(lambda x: list(set(x[1]))) \
+        .sortBy(lambda x: len(x[0])) \
+        .collect()
+
+    return all_candidates
 
 
 def get_original_frequent_sets(original_baskets, candidate_list):
-    original_freq_sets = original_baskets \
-        .flatMap(get_original_itemset_counts) \
-        .filter(lambda x: x[0] in candidate_list) \
+    frequent_itemset_list = original_baskets \
+        .flatMap(lambda x: get_original_itemset_counts(x, candidate_list)) \
         .reduceByKey(lambda a, b: a + b) \
-        .filter(lambda x: x[1] >= support)\
-        .map(lambda x: (x[0]))\
+        .filter(lambda x: x[1] >= support) \
+        .map(lambda x: (len(x[0]), x[0])) \
+        .groupByKey() \
+        .sortBy(lambda x: x[0]) \
+        .map(lambda x: list(x[1])) \
         .collect()
 
-    return original_freq_sets
+    return frequent_itemset_list
 
 
-def write_results(result_candidates, result_frequent_itemsets):
-    with open(argv[4], 'w') as results_file:
+def write_results(result_candidates, result_frequent_itemsets, result_file_path):
+    with open(result_file_path, 'w') as results_file:
         results_file.write('Candidates:\n')
         output = []
         for single_cad in sorted(result_candidates[0]):
@@ -79,49 +137,52 @@ def write_results(result_candidates, result_frequent_itemsets):
         for freq_set in result_frequent_itemsets[1:]:
             results_file.write(','.join(map(str, (sorted(freq_set)))) + '\n\n')
 
+
 if __name__ == '__main__':
     start_time = time.time()
+
+    # initialize spark
     conf = SparkConf()
     conf.set("spark.driver.memory", "4g")
     conf.set("spark.executor.memory", "4g")
     conf.setMaster('local[8]')
     conf.setAppName('Assignment_2')
-
     sc = SparkContext.getOrCreate(conf)
-    argv = sys.argv
 
-    data_path = 'asnlib/publicdata/'
-    data = sc.textFile(data_path + argv[3]).map(lambda x: x.split(',')).map(lambda x: (x[0], x[1]))
+    # get args
+    case = int(sys.argv[1])
+    support = int(sys.argv[2])
+    input_file = sys.argv[3]
+    result_file = sys.argv[4]
+
+    # create baskets rdd
+    data = sc.textFile(input_file).map(lambda x: x.split(',')).map(lambda x: (x[0], x[1]))
     header = data.first()
     raw_data = data.filter(lambda x: x != header)
 
-    if argv[1] == '2':
+    if case == 2:
         raw_data = raw_data.map(lambda x: (x[1], x[0]))
 
-    baskets = raw_data.distinct().groupByKey().map(lambda x: (x[0], sorted(list(x[1]))))
-    # print(baskets.collect())
-    support = int(argv[2])
-    partial_support = support // baskets.getNumPartitions()
+    baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1])))).filter(lambda x: len(x) >= threshold)
 
-    candidates = []
-    frequent_itemsets = []
-    set_size = 1
-    while True:
-        current_candidates = get_candidates_list(candidate_baskets=baskets)
-        candidates.append(current_candidates)
-        current_candidates_dict = dict.fromkeys(current_candidates, 1)
+    # initialize partial_support
+    partition_support = int(support / baskets.getNumPartitions())
 
-        current_frequent_itemsets = get_original_frequent_sets(
-            original_baskets=baskets,
-            candidate_list=current_candidates_dict
-        )
-        if not current_frequent_itemsets:
-            break
+    # get candidate frequent item sets
+    candidate_item_sets = get_candidates_list(baskets)
 
-        frequent_itemsets.append(current_frequent_itemsets)
+    # evaluate candidate frequent item sets for original frequent item sets
+    frequent_itemsets = get_original_frequent_sets(
+        original_baskets=baskets,
+        candidate_list=candidate_item_sets
+    )
 
-        set_size += 1
+    # write results to file
+    write_results(
+        result_candidates=candidate_item_sets,
+        result_frequent_itemsets=frequent_itemsets,
+        result_file_path=result_file
+    )
 
-    write_results(result_candidates=candidates, result_frequent_itemsets=frequent_itemsets)
     # output 1
     print("Duration: {:.2f}".format(time.time() - start_time))
