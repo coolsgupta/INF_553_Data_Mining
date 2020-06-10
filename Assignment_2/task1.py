@@ -120,7 +120,7 @@ def write_results(result_candidates, result_frequent_itemsets, result_file_path)
         results_file.write('Candidates:\n')
         output = []
         for single_cad in sorted(result_candidates[0]):
-            output.append('(\'' + str(single_cad) + '\')')
+            output.append('(\'' + str(single_cad[0]) + '\')')
 
         results_file.write(','.join(output) + '\n\n')
 
@@ -130,7 +130,7 @@ def write_results(result_candidates, result_frequent_itemsets, result_file_path)
         results_file.write('Frequent Itemsets:\n')
         output = []
         for single_item in sorted(result_frequent_itemsets[0]):
-            output.append('(\'' + str(single_item) + '\')')
+            output.append('(\'' + str(single_item[0]) + '\')')
 
         results_file.write(','.join(output) + '\n\n')
 
