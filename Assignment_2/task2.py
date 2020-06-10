@@ -5,34 +5,35 @@ findspark.init()
 from pyspark import SparkContext, SparkConf, StorageLevel
 import sys
 
-def get_all_candidates(bucket):
+def get_all_candidates(bucket, support, total_baskets_count):
     all_candidates = []
-    singleton_count_map = {}
+    singleton_frequency_map = {}
     candidate_singletons = []
-    pair_count_map = {}
+    pair_frequency_map = {}
     candidate_pairs = []
+    partition_support = round(support * (len(bucket) / total_baskets_count))
 
     for basket in bucket:
         basket.sort()
         for item in basket:
-            if item not in singleton_count_map:
-                singleton_count_map[item] = 0
-            singleton_count_map[item] += 1
+            if item not in singleton_frequency_map:
+                singleton_frequency_map[item] = 0
+            singleton_frequency_map[item] += 1
 
         for pair in itertools.combinations(basket, 2):
-            if frozenset(pair) not in pair_count_map:
-                pair_count_map[frozenset(pair)] = 0
-            pair_count_map[frozenset(pair)] += 1
+            if frozenset(pair) not in pair_frequency_map:
+                pair_frequency_map[frozenset(pair)] = 0
+            pair_frequency_map[frozenset(pair)] += 1
 
-    for item in singleton_count_map:
-        if singleton_count_map[item] >= partition_support:
-            candidate_singletons.append((item))
+    for item in singleton_frequency_map:
+        if singleton_frequency_map[item] >= partition_support:
+            candidate_singletons.append(item)
 
     all_candidates.append([1, candidate_singletons])
 
     for pair in itertools.combinations(candidate_singletons, 2):
         pair = frozenset(pair)
-        if pair in pair_count_map and pair_count_map[pair] >= partition_support:
+        if pair in pair_frequency_map and pair_frequency_map[pair] >= partition_support:
             candidate_pairs.append(pair)
 
     all_candidates.append([2, candidate_pairs])
@@ -56,14 +57,23 @@ def get_all_candidates(bucket):
                 if cand_item_set.issubset(set(basket)):
                     part_sup_cand += 1
 
-                    if part_sup_cand >= partition_support:
+                    if part_sup_cand >= partition_support and cand_item_set not in supported_candidates:
                         supported_candidates.append(cand_item_set)
 
+        # eliminate_candidates = []
+        verified_candidates = []
         for cand_item_set in supported_candidates:
-            for subset in itertools.combinations(cand_item_set, set_size - 1):
-                subset = set(subset)
-                if subset not in all_candidates[set_size - 2][1]:
-                    supported_candidates.remove(cand_item_set)
+            valid_candidate = True
+            for cand_subset in itertools.combinations(cand_item_set, set_size - 1):
+                if set(cand_subset) not in all_candidates[set_size - 2][1]:
+                    valid_candidate = False
+                    # eliminate_candidates.append(subset)
+
+            if valid_candidate and cand_item_set not in verified_candidates:
+                verified_candidates.append(cand_item_set)
+
+
+        # supported_candidates = list(set(supported_candidates) - set(eliminate_candidates))
 
         previous_candidates = supported_candidates
         set_size += 1
@@ -88,9 +98,9 @@ def get_original_itemset_counts(basket, all_candidates):
                 yield (candidate, 1)
 
 
-def get_candidates_list(all_baskets):
+def get_candidates_list(all_baskets, total_baskets_count):
     all_candidates = all_baskets \
-        .mapPartitions(lambda x: get_all_candidates(list(x))) \
+        .mapPartitions(lambda x: get_all_candidates(list(x), support, total_baskets_count)) \
         .reduceByKey(lambda a, b: a + b) \
         .map(lambda x: list(set(x[1]))) \
         .sortBy(lambda x: len(x[0])) \
@@ -118,7 +128,7 @@ def write_results(result_candidates, result_frequent_itemsets, result_file_path)
         results_file.write('Candidates:\n')
         output = []
         for single_cad in sorted(result_candidates[0]):
-            output.append('(\'' + str(single_cad) + '\')')
+            output.append('(\'' + str(single_cad[0]) + '\')')
 
         results_file.write(','.join(output) + '\n\n')
 
@@ -128,7 +138,7 @@ def write_results(result_candidates, result_frequent_itemsets, result_file_path)
         results_file.write('Frequent Itemsets:\n')
         output = []
         for single_item in sorted(result_frequent_itemsets[0]):
-            output.append('(\'' + str(single_item) + '\')')
+            output.append('(\'' + str(single_item[0]) + '\')')
 
         results_file.write(','.join(output) + '\n\n')
 
@@ -159,12 +169,14 @@ if __name__ == '__main__':
     raw_data = data.filter(lambda x: x != header)
 
     baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1])))).filter(lambda x: len(x) >= threshold)
+    baskets = sc.parallelize(baskets.collect(), 2)
+    total_baskets_count = baskets.count()
 
     # initialize partial_support
-    partition_support = int(support / baskets.getNumPartitions())
+    # partition_support = round(support / baskets.getNumPartitions())
 
     # get candidate frequent item sets
-    candidate_item_sets = get_candidates_list(baskets)
+    candidate_item_sets = get_candidates_list(baskets, total_baskets_count)
 
     # evaluate candidate frequent item sets for original frequent item sets
     frequent_itemsets = get_original_frequent_sets(
