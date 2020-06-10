@@ -163,7 +163,7 @@ if __name__ == '__main__':
     if case == 2:
         raw_data = raw_data.map(lambda x: (x[1], x[0]))
 
-    baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1])))).filter(lambda x: len(x) >= threshold)
+    baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1]))))
 
     # initialize partial_support
     partition_support = int(support / baskets.getNumPartitions())
