@@ -2,7 +2,7 @@ import time
 import itertools
 import findspark
 findspark.init()
-from pyspark import SparkContext, SparkConf, StorageLevel
+from pyspark import SparkContext, SparkConf
 import sys
 
 def get_all_candidates(bucket, support, total_baskets_count):
@@ -41,7 +41,7 @@ def get_all_candidates(bucket, support, total_baskets_count):
     set_size = 3
     previous_candidates = candidate_pairs
 
-    while 1:
+    while True:
         current_candidates = []
         for i, subcand_1 in enumerate(previous_candidates):
             for subcand_2 in previous_candidates[i + 1:]:
@@ -87,15 +87,14 @@ def get_all_candidates(bucket, support, total_baskets_count):
             candidates = [tuple((x,)) for x in cand_set[1]]
         else:
             candidates = [tuple(sorted(x)) for x in cand_set[1]]
-        yield ((cand_set[0], candidates))
+        yield cand_set[0], candidates
 
 
 def get_original_itemset_counts(basket, all_candidates):
     for candidate_set in all_candidates:
         for candidate in candidate_set:
-            # for basket in bucket:
             if set(candidate).issubset(basket):
-                yield (candidate, 1)
+                yield candidate, 1
 
 
 def get_candidates_list(all_baskets, total_baskets_count):
@@ -168,7 +167,7 @@ if __name__ == '__main__':
     header = data.first()
     raw_data = data.filter(lambda x: x != header)
 
-    baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1])))).filter(lambda x: len(x) >= threshold)
+    baskets = raw_data.groupByKey().map(lambda x: (list(set(x[1])))).filter(lambda x: len(x) > threshold)
     baskets = sc.parallelize(baskets.collect(), 2)
     total_baskets_count = baskets.count()
 
