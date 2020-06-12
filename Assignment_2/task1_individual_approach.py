@@ -82,16 +82,16 @@ def write_results(result_candidates, result_frequent_itemsets):
 if __name__ == '__main__':
     start_time = time.time()
     conf = SparkConf()
-    conf.set("spark.driver.memory", "4g")
-    conf.set("spark.executor.memory", "4g")
+    # conf.set("spark.driver.memory", "4g")
+    # conf.set("spark.executor.memory", "4g")
     conf.setMaster('local[8]')
     conf.setAppName('Assignment_2')
 
     sc = SparkContext.getOrCreate(conf)
     argv = sys.argv
 
-    data_path = 'asnlib/publicdata/'
-    data = sc.textFile(data_path + argv[3]).map(lambda x: x.split(',')).map(lambda x: (x[0], x[1]))
+    # data_path = 'asnlib/publicdata/'
+    data = sc.textFile(argv[3]).map(lambda x: x.split(',')).map(lambda x: (x[0], x[1]))
     header = data.first()
     raw_data = data.filter(lambda x: x != header)
 
