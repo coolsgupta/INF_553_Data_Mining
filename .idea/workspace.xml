@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Assignments.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Assignments.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_2/task_2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_2/task_2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_1-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_1-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_3/task_1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/task_1.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,21 +31,22 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_2/plaig_test.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_3/test_script.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -59,13 +65,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assignment_2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assignment_3" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_2/plaig_test.py" />
-      <option name="PARAMETERS" value="1 4 asnlib/publicdata/small2.csv results_a1_t12.txt" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_3/test_script.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -100,18 +106,20 @@
       <workItem from="1591724461449" duration="41007000" />
       <workItem from="1591776839587" duration="561000" />
       <workItem from="1591816236048" duration="16218000" />
-      <workItem from="1591994823369" duration="759000" />
+      <workItem from="1591994823369" duration="2403000" />
+      <workItem from="1592003759293" duration="1072000" />
+      <workItem from="1592069806767" duration="23975000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591818702367">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592342883025">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818702367" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592342883025" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591776870884" />
     <state x="532" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591075061313">
       <screen x="0" y="0" width="1536" height="824" />
@@ -121,55 +129,55 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="630" y="298" key="#com.intellij.tools.ToolEditorDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591075900155" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1591818701238">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1592342790422">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818701238" />
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592342790422" />
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590612222240" />
-    <state width="1493" height="302" key="GridCell.Tab.0.bottom" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.0.bottom" timestamp="1592383503978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="341" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503978" />
     <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.0.center" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.0.center" timestamp="1592383503978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="341" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503978" />
     <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.0.left" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.0.left" timestamp="1592383503977">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="341" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503977" />
     <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.0.right" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.0.right" timestamp="1592383503978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="341" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503978" />
     <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.bottom" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.1.bottom" timestamp="1592383503978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718083" />
+    <state width="1493" height="341" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503978" />
     <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.center" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.1.center" timestamp="1592383503978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718083" />
+    <state width="1493" height="341" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503978" />
     <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.left" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.1.left" timestamp="1592383503978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="341" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503978" />
     <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.right" timestamp="1591943873435">
+    <state width="1493" height="341" key="GridCell.Tab.1.right" timestamp="1592383503978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718083" />
+    <state width="1493" height="341" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592383503978" />
     <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state x="370" y="110" key="SettingsEditor" timestamp="1591566370305">
+    <state x="370" y="110" key="SettingsEditor" timestamp="1592003827813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="370" y="110" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591566370305" />
+    <state x="370" y="110" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592003827813" />
     <state x="2383" y="166" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590082090695" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1591995549870">
       <screen x="0" y="0" width="1536" height="824" />
@@ -223,11 +231,106 @@
           <url>file://$PROJECT_DIR$/Assignment_2/task2.py</url>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>136</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>146</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>147</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>155</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>160</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>166</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>174</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>181</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>200</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>209</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script.py</url>
+          <line>138</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script.py</url>
+          <line>192</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script.py</url>
+          <line>205</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script.py</url>
+          <line>216</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script.py</url>
+          <line>210</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1591818704336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
     <SUITE FILE_PATH="coverage/Assignments$task1.coverage" NAME="INF Coverage Results" MODIFIED="1591574554770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
+    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1592374159365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_3" />
   </component>
 </project>
