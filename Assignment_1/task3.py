@@ -15,6 +15,7 @@ if __name__ == '__main__':
     argv = sys.argv
     argv[4], argv[5] = list(map(int, argv[4:]))
     results = dict()
+
     sc = SparkContext('local[8]', 'task2')
     reviews_count_tuples = sc.textFile(argv[1]).map(lambda x: json.loads(x)).map(lambda x: (x['business_id'], 1))
 

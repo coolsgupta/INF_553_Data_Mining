@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assignment_3/task1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment_3/test_script_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_1/task1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_1/task1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_1/task3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_1/task3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_1-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_1-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment_3/task_1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/task_1.ipynb" afterDir="false" />
     </list>
@@ -36,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_3/test_script.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_3/test_script_2.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -44,7 +48,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -67,7 +71,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_3/test_script.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_3/test_script_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -105,7 +109,7 @@
       <workItem from="1591816236048" duration="16218000" />
       <workItem from="1591994823369" duration="2403000" />
       <workItem from="1592003759293" duration="1072000" />
-      <workItem from="1592069806767" duration="27525000" />
+      <workItem from="1592069806767" duration="37725000" />
     </task>
     <servers />
   </component>
@@ -113,10 +117,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592342883025">
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592588598728">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592342883025" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592588598728" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591776870884" />
     <state x="532" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591075061313">
       <screen x="0" y="0" width="1536" height="824" />
@@ -126,56 +130,60 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="630" y="298" key="#com.intellij.tools.ToolEditorDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591075900155" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1592342790422">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1592588597141">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592342790422" />
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592588597141" />
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590612222240" />
-    <state width="723" height="340" key="GridCell.Tab.0.bottom" timestamp="1592432391008">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="913" height="210" key="GridCell.Tab.0.bottom" timestamp="1592597794885">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432391008" />
+    <state width="724" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589433524" />
+    <state width="913" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592597794885" />
     <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="723" height="340" key="GridCell.Tab.0.center" timestamp="1592432391007">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="913" height="210" key="GridCell.Tab.0.center" timestamp="1592597794884">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432391007" />
+    <state width="724" height="210" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589433524" />
+    <state width="913" height="210" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592597794884" />
     <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="723" height="340" key="GridCell.Tab.0.left" timestamp="1592432391007">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="913" height="210" key="GridCell.Tab.0.left" timestamp="1592597794883">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432391007" />
+    <state width="724" height="210" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589433524" />
+    <state width="913" height="210" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592597794883" />
     <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="723" height="340" key="GridCell.Tab.0.right" timestamp="1592432391007">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="913" height="210" key="GridCell.Tab.0.right" timestamp="1592597794884">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432391007" />
+    <state width="724" height="210" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589433524" />
+    <state width="913" height="210" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592597794884" />
     <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="723" height="340" key="GridCell.Tab.1.bottom" timestamp="1592432399824">
+    <state width="724" height="210" key="GridCell.Tab.1.bottom" timestamp="1592589435851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432399824" />
+    <state width="724" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589435851" />
     <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="723" height="340" key="GridCell.Tab.1.center" timestamp="1592432399824">
+    <state width="724" height="210" key="GridCell.Tab.1.center" timestamp="1592589435851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432399824" />
+    <state width="724" height="210" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589435851" />
     <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="723" height="340" key="GridCell.Tab.1.left" timestamp="1592432399824">
+    <state width="724" height="210" key="GridCell.Tab.1.left" timestamp="1592589435850">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432399824" />
+    <state width="724" height="210" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589435850" />
     <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="723" height="340" key="GridCell.Tab.1.right" timestamp="1592432399824">
+    <state width="724" height="210" key="GridCell.Tab.1.right" timestamp="1592589435851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="723" height="340" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592432399824" />
+    <state width="724" height="210" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592589435851" />
     <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state x="370" y="110" key="SettingsEditor" timestamp="1592003827813">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2383" y="166" key="SettingsEditor" timestamp="1592592073334">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="370" y="110" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592003827813" />
-    <state x="2383" y="166" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590082090695" />
+    <state x="2383" y="166" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592592073334" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1591995549870">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -185,10 +193,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="330" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1591625519023" />
-    <state x="498" y="178" width="538" height="538" key="search.everywhere.popup" timestamp="1590987460746">
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1592537528982">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="178" width="538" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1590987460746" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592537528982" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590427993724" />
   </component>
   <component name="XDebuggerManager">
@@ -303,11 +311,96 @@
           <line>222</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>172</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>177</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>181</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>186</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>190</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>193</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>202</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>228</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>240</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>245</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>252</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>255</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>257</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>256</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>264</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_2.py</url>
+          <line>271</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Assignments$task1.coverage" NAME="INF Coverage Results" MODIFIED="1591574554770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
-    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1592374159365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_3" />
+    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1592588647137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_3" />
   </component>
 </project>
