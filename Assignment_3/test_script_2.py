@@ -209,7 +209,7 @@ if __name__ == '__main__':
         .flatMap(lambda bid_words_vvs: [((bid_words_vvs[0], words_vv[0]),
                                          words_vv[1] / words_vv[2])
                                         for words_vv in bid_words_vvs[1]]).persist()
-
+    bid_words_tf = bid_words_tf_rdd.collect()
     # calculate the idf for each document (business)
     # 1. split review text in to words
     # 2. count the word's appearance
@@ -221,6 +221,7 @@ if __name__ == '__main__':
         .flatMap(lambda word_bids: [((bid, word_bids[0]),
                                      math.log(len(bus_index_dict) / len(word_bids[1]), 2))
                                     for bid in word_bids[1]])
+    bid_words_idf = bid_words_idf_rdd.collect()
 
     # 1. group by tf idf score for each word
     # 2. select top 200 highest TF-IDF word which will serve as a business profile
@@ -234,7 +235,7 @@ if __name__ == '__main__':
         .mapValues(lambda val: sorted(list(val), reverse=True,
                                       key=lambda item: item[1])[:TOP_200]) \
         .mapValues(lambda word_vals: [item[0] for item in word_vals])
-
+    bid_word_tf_idf = bid_word_tf_idf_rdd.collect()
     # tokenize the word into index
     # dict(word: int)
     # => e.g. {'fries': 0, 'good': 1, 'salad': 2, 'came': 3, 'us': 4, 'like': 5
@@ -269,6 +270,7 @@ if __name__ == '__main__':
         .reduceByKey(extendValue).filter(lambda uid_bids: len(uid_bids[1]) > 1) \
         .map(lambda uid_bids: {uid_bids[0]: list(set(uid_bids[1]))})
 
+    user_profile_list = user_profile.collect()
     model_content.extend(wrapper(user_profile.collect(), USER_PROFILE,
                                  keys=[USER_INDEX, USER_PROFILE]))
 
