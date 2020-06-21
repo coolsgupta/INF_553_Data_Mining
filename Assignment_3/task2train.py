@@ -34,14 +34,16 @@ def add_to_model(key_type, model_params):
     return additional_model_params
 
 
-def write_model(model_params):
-    with open('model.json', 'w') as file:
+def write_model(model_params, file_path):
+    with open(file_path, 'w') as file:
         for line in model_params:
             file.write(json.dumps(line) + '\n')
     file.close()
 
 
 if __name__ == '__main__':
+    argv = sys.argv
+
     start_time = time.time()
     conf = SparkConf()
     conf.set("spark.driver.memory", "4g")
@@ -51,8 +53,8 @@ if __name__ == '__main__':
     sc = SparkContext.getOrCreate(conf)
 
     # load reviews
-    reviews_json = sc.textFile('asnlib/publicdata/train_review.json').map(json.loads)
-    stop_words = set(word.strip() for word in open("asnlib/publicdata/stopwords"))
+    reviews_json = sc.textFile(argv[1]).map(json.loads)
+    stop_words = set(word.strip() for word in open(argv[3]))
 
     # create user tokens
     users_token_dict = reviews_json \
@@ -141,7 +143,7 @@ if __name__ == '__main__':
     model.extend(add_to_model('user_profile', user_tokenized_profile_dict))
 
     # write model to file
-    write_model(model)
+    write_model(model, argv[2])
 
     # print time of execution
     print('Duration: {:.2f}'.format(time.time() - start_time))
