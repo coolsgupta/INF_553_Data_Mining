@@ -62,20 +62,24 @@ if __name__ == '__main__':
         .collectAsMap()
 
     # load test data
-    test_pairs = sc.textFile(argv[1])\
-        .map(json.loads)\
-        .map(lambda x: (user_tokens_dict.get(x['user_id'], None), business_tokens_dict.get(x['business_id'], None)))\
-        .filter(lambda x: x[0] is not None and x[1] is not None)\
-        .distinct()
+    # test_pairs = sc.textFile(argv[1])\
+    #     .map(json.loads)\
+    #     .map(lambda x: (user_tokens_dict.get(x['user_id'], None), business_tokens_dict.get(x['business_id'], None)))\
+    #     .filter(lambda x: x[0] is not None and x[1] is not None)\
+    #     .distinct()
 
     # getting inverse token dicts
     inverse_business_token_dict = {token: oid for oid, token in business_tokens_dict.items()}
     inverse_user_token_dict = {token: oid for oid, token in user_tokens_dict.items()}
 
     # compute cosine similarities
-    sim_sets_filtered = test_pairs\
+    sim_sets_filtered = sc.textFile(argv[1])\
+        .map(json.loads)\
+        .map(lambda x: (user_tokens_dict.get(x['user_id'], None), business_tokens_dict.get(x['business_id'], None)))\
+        .filter(lambda x: x[0] is not None and x[1] is not None)\
+        .distinct()\
         .map(lambda x: ((x[0], x[1]), get_cos_sim(user_profile_dict.get(x[0], None), business_profile_dict.get(x[1], None))))\
-        .filter(lambda x: x[1] > 0.01)
+        .filter(lambda x: x[1] >= 0.01)
 
     sim_sets_dict = sim_sets_filtered.collectAsMap()
 
