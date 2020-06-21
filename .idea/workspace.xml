@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assignment_3/task1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assignment_3/test_script_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_1/task1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_1/task1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_1/task3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_1/task3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_1-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_1-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_3/task_1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/task_1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_2_new-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/.ipynb_checkpoints/task_2_new-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_3/task_2_new.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/task_2_new.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +126,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="630" y="298" key="#com.intellij.tools.ToolEditorDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591075900155" />
+    <state x="2012" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1592706322247">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2012" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592706322247" />
     <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1592588597141">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -184,6 +184,10 @@
     </state>
     <state x="370" y="110" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592003827813" />
     <state x="2383" y="166" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592592073334" />
+    <state x="2665" y="254" key="VcsDiffUtil.ChangesDialog" timestamp="1592705934930">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2665" y="254" key="VcsDiffUtil.ChangesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592705934930" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1591995549870">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
