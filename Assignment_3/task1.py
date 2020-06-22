@@ -31,6 +31,14 @@ def get_min_hash_functions(num_func, buckets):
 #         min_hash_func_list.append(lambda x: ((a*x + b)%p)%buckets)
 #         print (a,b)
 
+def check_jaccard_similarity(candidate, business_user_tokens):
+    business_set_1 = set(business_user_tokens.get(candidate[0], []))
+    business_set_2 = set(business_user_tokens.get(candidate[1], []))
+    pair_jac_sim = 0
+    if business_set_1 and business_set_2:
+        pair_jac_sim = len(business_set_1.intersection(business_set_2)) / len(business_set_1.union(business_set_2))
+    return tuple([candidate, pair_jac_sim])
+
 
 def verifySimilarity(candidate_pairs_list, business_user_tokens, inverse_business_tokens, threshold):
     result = []
@@ -122,10 +130,16 @@ if __name__ == '__main__':
         .flatMap(lambda bid_list: [pair for pair in itertools.combinations(bid_list, 2)])
 
     # find actual similar pairs
-    result_list = verifySimilarity(candidate_pairs_list=set(candidate_pairs.collect()),
+    result_list_old = verifySimilarity(candidate_pairs_list=set(candidate_pairs.collect()),
                                    business_user_tokens=business_user_tokenized_dict,
                                    inverse_business_tokens=inverse_business_tokens_dict,
                                    threshold=0.05)
+    result_list = candidate_pairs\
+        .distinct()\
+        .map(lambda x: check_jaccard_similarity(x, business_user_tokenized_dict))\
+        .filter(lambda x: x[1] >= 0.05)\
+        .map(lambda x: {"b1": inverse_business_tokens_dict[x[0][0]], "b2": inverse_business_tokens_dict[x[0][1]], "sim": x[1]})\
+        .collect()
 
     print('Duration: {:.2f}'.format(time.time() - start_time))
 
