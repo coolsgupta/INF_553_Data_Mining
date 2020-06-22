@@ -17,9 +17,9 @@ def build_min_hash_func(a, b, p, m):
 
 
 def get_min_hash_functions(num_func, buckets):
-    list_a = random.sample(range(1, 9223372036), num_func)
-    list_b = random.sample(range(0, 9223372036), num_func)
-    p = 233333333333
+    list_a = random.sample(range(50331653, 92233720), num_func)
+    list_b = random.sample(range(25165843, 92233720), num_func)
+    p = 12582917
     min_hash_func_list = [build_min_hash_func(a, b, p, buckets) for a, b in zip(list_a, list_b)]
 
     return min_hash_func_list
