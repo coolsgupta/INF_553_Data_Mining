@@ -17,19 +17,13 @@ def build_min_hash_func(a, b, p, m):
 
 
 def get_min_hash_functions(num_func, buckets):
-    min_hash_func_list = []
-    list_a = random.sample(range(1, sys.maxsize - 1), num_func)
-    list_b = random.sample(range(0, sys.maxsize - 1), num_func)
+    list_a = random.sample(range(1, 9223372036), num_func)
+    list_b = random.sample(range(0, 9223372036), num_func)
     p = 233333333333
-
-    for a, b in zip(list_a, list_b):
-        min_hash_func_list.append(build_min_hash_func(a, b, p, buckets))
+    min_hash_func_list = [build_min_hash_func(a, b, p, buckets) for a, b in zip(list_a, list_b)]
 
     return min_hash_func_list
 
-
-#         min_hash_func_list.append(lambda x: ((a*x + b)%p)%buckets)
-#         print (a,b)
 
 def check_jaccard_similarity(candidate, business_user_tokens):
     business_set_1 = set(business_user_tokens.get(candidate[0], []))
@@ -40,22 +34,11 @@ def check_jaccard_similarity(candidate, business_user_tokens):
     return tuple([candidate, pair_jac_sim])
 
 
-def verifySimilarity(candidate_pairs_list, business_user_tokens, inverse_business_tokens, threshold):
-    result = []
-    for candidate in candidate_pairs_list:
-        business_set_1 = set(business_user_tokens.get(candidate[0], []))
-        business_set_2 = set(business_user_tokens.get(candidate[1], []))
-        if business_set_1 and business_set_2:
-            pair_jac_sim = len(business_set_1.intersection(business_set_2)) / len(business_set_1.union(business_set_2))
-            if pair_jac_sim >= threshold:
-                result.append(
-                    {
-                        "b1": inverse_business_tokens[candidate[0]],
-                        "b2": inverse_business_tokens[candidate[1]],
-                        "sim": pair_jac_sim
-                     }
-                )
-    return result
+def write_results(results, file_path):
+    with open(file_path, 'w') as file:
+        for line in results:
+            file.write(json.dumps(line) + '\n')
+    file.close()
 
 
 if __name__ == '__main__':
@@ -70,7 +53,7 @@ if __name__ == '__main__':
     sc = SparkContext.getOrCreate(conf)
 
     # load data
-    reviews_json = sc.textFile('asnlib/publicdata/train_review.json').map(json.loads)
+    reviews_json = sc.textFile(argv[1]).map(json.loads)
 
     # get all user_business_pairs
     user_business_pairs = reviews_json.map(lambda x: (x.get('user_id'), x.get('business_id'))).distinct()
@@ -111,10 +94,10 @@ if __name__ == '__main__':
     inverse_business_tokens_dict = {bid: token for token, bid in business_tokens_dict.items()}
 
     # create hash functions
-    min_hash_func_list = get_min_hash_functions(30, len(user_tokens_dict) * 2)
+    min_hash_func_list = get_min_hash_functions(50, len(user_tokens_dict) * 2)
 
     # get hashed values for users
-    user_hashed_values = user_tokens.map(lambda x: (user_tokens_dict.get(x[0]), [min_hash(x[1]) for min_hash in min_hash_func_list]))
+    user_hashed_values = user_tokens.map(lambda x: (x[1], [min_hash(x[1]) for min_hash in min_hash_func_list]))
 
     # create signature matrix
     signature_matrix_rdd = user_business_tokenized_map\
@@ -125,21 +108,20 @@ if __name__ == '__main__':
 
     # get candidate pairs
     candidate_pairs = signature_matrix_rdd \
-        .flatMap(lambda x: [(tuple([i, hash(tuple(x[1][i:i + 1]))]), x[0]) for i in range(0, 30)]) \
-        .groupByKey().map(lambda kv: list(kv[1])).filter(lambda val: len(val) > 1) \
+        .flatMap(lambda x: [(tuple([i, tuple(x[1][i:i + 1])]), x[0]) for i in range(0, 50)]) \
+        .groupByKey()\
+        .map(lambda x: list(x[1]))\
+        .filter(lambda val: len(val) > 1) \
         .flatMap(lambda bid_list: [pair for pair in itertools.combinations(bid_list, 2)])
 
-    # find actual similar pairs
-    result_list_old = verifySimilarity(candidate_pairs_list=set(candidate_pairs.collect()),
-                                   business_user_tokens=business_user_tokenized_dict,
-                                   inverse_business_tokens=inverse_business_tokens_dict,
-                                   threshold=0.05)
-    result_list = candidate_pairs\
+    final_similar_list = candidate_pairs\
         .distinct()\
         .map(lambda x: check_jaccard_similarity(x, business_user_tokenized_dict))\
         .filter(lambda x: x[1] >= 0.05)\
         .map(lambda x: {"b1": inverse_business_tokens_dict[x[0][0]], "b2": inverse_business_tokens_dict[x[0][1]], "sim": x[1]})\
         .collect()
+
+    write_results(final_similar_list, argv[2])
 
     print('Duration: {:.2f}'.format(time.time() - start_time))
 
