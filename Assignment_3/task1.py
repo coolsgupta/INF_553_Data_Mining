@@ -63,7 +63,7 @@ if __name__ == '__main__':
         .map(lambda x: x[0])\
         .distinct()\
         .sortBy(lambda x: x)\
-        .zipWithIndex()\
+        .zipWithIndex()
 
     user_tokens_dict = user_tokens.collectAsMap()
 
