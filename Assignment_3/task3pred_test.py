@@ -6,7 +6,8 @@ import collections
 import json
 import sys
 import time
-
+import findspark
+findspark.init()
 from pyspark import SparkConf, SparkContext
 
 USER_ID = 'user_id'
@@ -102,13 +103,13 @@ def makePrediction(mixed, data_dict, model_type, avg_score_dict=None,
 
 if __name__ == '__main__':
     start = time.time()
-    train_file_path = "../data/train_review.json"
-    test_file_path = "../data/test_review.json"
-    export_model_file_path = "../out/task3user.model"
-    output_file_path = "../out/task3user.predict"
+    train_file_path = "asnlib/publicdata/train_review.json"
+    test_file_path = "asnlib/publicdata/test_review_ratings.json"
+    export_model_file_path = "task3.model"
+    output_file_path = "task3user.predict"
     model_type = "user_based"  # either "item_based" or "user_based"
-    bus_avg_file_path = "../data/business_avg.json"
-    user_avg_file_path = "../data/user_avg.json"
+    bus_avg_file_path = "asnlib/publicdata/business_avg.json"
+    user_avg_file_path = "asnlib/publicdata/user_avg.json"
 
     # train_file_path = sys.argv[1]
     # test_file_path = sys.argv[2]
@@ -125,7 +126,7 @@ if __name__ == '__main__':
     sc = SparkContext(conf=conf)
 
     train_input_lines = sc.textFile(train_file_path).map(lambda row: json.loads(row)) \
-        .map(lambda kv: (kv[USER_ID], kv[BUSINESS_ID], kv[SCORE])).persist()
+        .map(lambda kv: (kv[USER_ID], kv[BUSINESS_ID], kv[SCORE]))
 
     user_index_dict = train_input_lines.map(lambda kvv: kvv[0]).distinct() \
         .sortBy(lambda item: item).zipWithIndex().map(lambda kv: {kv[0]: kv[1]}) \
@@ -216,6 +217,7 @@ if __name__ == '__main__':
             .map(lambda kv: (bus_index_dict.get(kv[BUSINESS_ID], -1),
                              user_index_dict.get(kv[USER_ID], -1))) \
             .filter(lambda bid_uid: bid_uid[0] != -1 and bid_uid[1] != -1)
+        test_bid_uidx_collection = test_bid_uidx_rdd.collect()
 
         output_pair = test_bid_uidx_rdd.leftOuterJoin(train_bid_uidx_score_rdd) \
             .mapValues(lambda mixed: makePrediction(mixed=tuple(mixed),
@@ -226,6 +228,7 @@ if __name__ == '__main__':
             .map(lambda kvv: {"user_id": reversed_index_user_dict[kvv[1][0]],
                               "business_id": reversed_index_bus_dict[kvv[0]],
                               "stars": kvv[1][1]})
+        output_pair_collection = output_pair.collect()
 
-    export2File(output_pair.collect(), output_file_path)
+    export2File(output_pair_collection, output_file_path)
     print("Duration: %d s." % (time.time() - start))

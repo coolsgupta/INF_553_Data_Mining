@@ -149,9 +149,9 @@ def wrapper(data, type, keys):
 if __name__ == '__main__':
     start = time.time()
     # define input variables
-    train_file_path = "asnlib/publicdata/train_review.json"
+    train_file_path = "../asnlib/publicdata/train_review.json"
     export_model_file_path = "task2.model"
-    stop_words_file_path = "asnlib/publicdata/stopwords"
+    stop_words_file_path = "../asnlib/publicdata/stopwords"
 
     # train_file_path = sys.argv[1]
     # export_model_file_path = sys.argv[2]
