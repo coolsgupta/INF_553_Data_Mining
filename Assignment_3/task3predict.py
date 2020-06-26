@@ -41,8 +41,7 @@ def item_based_model_predict(bid_user_ratings, n, item_model, business_average_r
             [candidate_id, business_average_ratings_dict.get(inverse_tokens_dict.get(candidate_id), over_all_avg)])
 
 
-def user_based_model_predict(uid_business_ratings, user_model, user_average_ratings_dict, inverse_tokens_dict,
-                             over_all_avg):
+def user_based_model_predict(uid_business_ratings, user_model, user_average_ratings_dict, inverse_tokens_dict, over_all_avg):
     candidate_id = uid_business_ratings[0]
     rating_similarity_sets = [
         tuple([
@@ -61,8 +60,8 @@ def user_based_model_predict(uid_business_ratings, user_model, user_average_rati
         return tuple(
             [
                 candidate_id,
-                user_average_ratings_dict.get(candidate_id, over_all_avg) + similarity_rating /
-                sum(map(lambda item: abs(item[2]), rating_similarity_sets))
+                user_average_ratings_dict.get(inverse_tokens_dict.get(candidate_id, ''),
+                over_all_avg) + similarity_rating / sum(map(lambda item: abs(item[2]), rating_similarity_sets))
             ]
         )
 
@@ -134,7 +133,7 @@ if __name__ == '__main__':
 
     if argv[5] == 'user_based':
         # tokenize the model
-        model = model.map(lambda x: ((user_tokens_dict[x[0]], user_tokens_dict[x[1]]), x[2])).collectAsMap()
+        model = model.map(lambda x: (tuple(sorted([user_tokens_dict[x[0]], user_tokens_dict[x[1]]])), x[2])).collectAsMap()
         # business and list of user and respective user ratings
         business_user_rating_sets = train_user_business_rating_sets_tokenized \
             .map(lambda x: (x[1], (x[0], x[2]))) \
