@@ -14,7 +14,7 @@ def write_results(results, file_path):
     file.close()
 
 
-def item_based_model_predict(bid_user_ratings, n, item_model, business_average_ratings_dict, inverse_tokens_dict):
+def item_based_model_predict(bid_user_ratings, n, item_model, business_average_ratings_dict, inverse_tokens_dict, over_all_avg):
     candidate_id = bid_user_ratings[0]
     rating_similarity_pairs = sorted(
         [
@@ -37,32 +37,37 @@ def item_based_model_predict(bid_user_ratings, n, item_model, business_average_r
         return tuple([candidate_id, similarity_rating / sum(map(lambda x: abs(x[1]), n_similar_businesses))])
 
     except:
-        return tuple([candidate_id, business_average_ratings_dict.get(inverse_tokens_dict.get(candidate_id), 3.5)])
+        return tuple(
+            [candidate_id, business_average_ratings_dict.get(inverse_tokens_dict.get(candidate_id), over_all_avg)])
 
 
-def user_based_model_predict(uid_business_ratings, user_model, user_average_ratings_dict, inverse_tokens_dict):
+def user_based_model_predict(uid_business_ratings, user_model, user_average_ratings_dict, inverse_tokens_dict,
+                             over_all_avg):
     candidate_id = uid_business_ratings[0]
     rating_similarity_sets = [
         tuple([
             user_rating_pair[1],
-            user_average_ratings_dict.get(inverse_tokens_dict.get(user_rating_pair[0], ''), 3),
+            user_average_ratings_dict.get(inverse_tokens_dict.get(user_rating_pair[0], ''), over_all_avg),
             user_model.get(tuple(sorted([candidate_id, user_rating_pair[0]])), 0)
         ])
         for user_rating_pair in list(uid_business_ratings[1])
     ]
 
     try:
+        similarity_rating = sum(map(lambda x: (x[0] - x[1]) * x[2], rating_similarity_sets))
+        if not similarity_rating:
+            raise Exception('No similarity rating')
+
         return tuple(
             [
                 candidate_id,
-                user_average_ratings_dict.get(candidate_id, 3) +
-                sum(map(lambda x: (x[0] - x[1]) * x[2], rating_similarity_sets)) /
+                user_average_ratings_dict.get(candidate_id, over_all_avg) + similarity_rating /
                 sum(map(lambda item: abs(item[2]), rating_similarity_sets))
             ]
         )
 
     except:
-        return tuple([candidate_id, user_average_ratings_dict.get(inverse_tokens_dict.get(candidate_id), 3)])
+        return tuple([candidate_id, user_average_ratings_dict.get(inverse_tokens_dict.get(candidate_id), over_all_avg)])
 
 
 if __name__ == '__main__':
@@ -125,10 +130,11 @@ if __name__ == '__main__':
 
     # collect final model as similarity pairs
     model = model \
-        .map(lambda x: ((x[keys[0]], x[keys[1]]), x[keys[2]])) \
-        .collectAsMap()
+        .map(lambda x: (x[keys[0]], x[keys[1]], x[keys[2]]))
 
     if argv[5] == 'user_based':
+        # tokenize the model
+        model = model.map(lambda x: ((user_tokens_dict[x[0]], user_tokens_dict[x[1]]), x[2])).collectAsMap()
         # business and list of user and respective user ratings
         business_user_rating_sets = train_user_business_rating_sets_tokenized \
             .map(lambda x: (x[1], (x[0], x[2]))) \
@@ -141,6 +147,7 @@ if __name__ == '__main__':
             .map(lambda x: dict(x)) \
             .flatMap(lambda x: x.items()) \
             .collectAsMap()
+        over_all_avg = sum(user_average_ratings.values()) / len(user_average_ratings)
 
         # user_average_ratings = user_average_ratings[0]
 
@@ -151,7 +158,8 @@ if __name__ == '__main__':
         # making predictions
         results = test_user_business_pairs_tokenized \
             .leftOuterJoin(business_user_rating_sets) \
-            .mapValues(lambda x: user_based_model_predict(x, model, user_average_ratings, inverse_user_tokens_dict)) \
+            .mapValues(
+            lambda x: user_based_model_predict(x, model, user_average_ratings, inverse_user_tokens_dict, over_all_avg)) \
             .map(lambda x:
                  {
                      "user_id": inverse_user_tokens_dict[x[1][0]],
@@ -162,11 +170,12 @@ if __name__ == '__main__':
             .collect()
 
     else:
+        model = model.map(lambda x: ((business_tokens_dict[x[0]], business_tokens_dict[x[1]]), x[2])).collectAsMap()
         # users and list of rated businesses with respective ratings
         user_business_rating_sets = train_user_business_rating_sets_tokenized \
             .map(lambda x: (x[0], (x[1], x[2]))) \
             .groupByKey() \
-            .map(lambda x: (x[0], [(business_rating[0], business_rating[1]) for business_rating in list(x[1])]))
+            .map(lambda x: (x[0], [(business_rating[0], business_rating[1]) for business_rating in list(set(x[1]))]))
 
         # dictionary of average ratings for each business from the given file
         business_average_ratings = sc.textFile('asnlib/publicdata/business_avg.json') \
@@ -174,12 +183,15 @@ if __name__ == '__main__':
             .map(lambda x: dict(x)) \
             .flatMap(lambda x: x.items()) \
             .collectAsMap()
+
+        over_all_avg = sum(business_average_ratings.values()) / len(business_average_ratings)
         # business_average_ratings = business_average_ratings[0]
 
         results = test_user_business_pairs_tokenized \
             .leftOuterJoin(user_business_rating_sets) \
             .mapValues(
-            lambda x: item_based_model_predict(x, 3, model, business_average_ratings, inverse_business_tokens_dict)) \
+            lambda x: item_based_model_predict(x, 3, model, business_average_ratings, inverse_business_tokens_dict,
+                                               over_all_avg)) \
             .map(lambda x:
                  {
                      "user_id": inverse_user_tokens_dict[x[0]],
