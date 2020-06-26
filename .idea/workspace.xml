@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="">
+    <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="finished train script">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_3/task3pred_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_3/test_3_predict.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +20,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/oscargong/INF_553.git" />
+      </set>
+    </option>
+  </component>
   <component name="JupyterTrust" id="34ed59f6-6882-43a2-b6b4-ef8ebfbbc5ad" />
   <component name="ProjectId" id="1cE6FgUzWbEF9MTDv5H7uchXZFG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -26,31 +34,34 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_2/plaig_test.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_3/test_3_predict.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_3\task1" />
+      <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_3\task2" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_2\asnlib\publicdata" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_1" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment 1" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.INF">
     <configuration name="INF" type="PythonConfigurationType" factoryName="Python">
       <module name="Assignments" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -59,13 +70,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assignment_2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assignment_3" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_2/plaig_test.py" />
-      <option name="PARAMETERS" value="1 4 asnlib/publicdata/small2.csv results_a1_t12.txt" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_3/test_3_predict.py" />
+      <option name="PARAMETERS" value="asnlib/publicdata/train_review.json asnlib/publicdata/test_review_ratings.json task3item.model item.predictions item_based" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -73,6 +84,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="verification_code" type="PythonConfigurationType" factoryName="Python">
+      <module name="Assignments" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Assignment_3" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_3/test_script_3.py" />
+      <option name="PARAMETERS" value="asnlib/publicdata/train_review.json task3item_aaron.model item_based" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.INF" />
+      <item itemvalue="Python.verification_code" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -100,18 +137,101 @@
       <workItem from="1591724461449" duration="41007000" />
       <workItem from="1591776839587" duration="561000" />
       <workItem from="1591816236048" duration="16218000" />
-      <workItem from="1591994823369" duration="759000" />
+      <workItem from="1591994823369" duration="2403000" />
+      <workItem from="1592003759293" duration="1072000" />
+      <workItem from="1592069806767" duration="37725000" />
+      <workItem from="1592776968304" duration="18923000" />
+      <workItem from="1592860409269" duration="20113000" />
+      <workItem from="1592947825421" duration="25077000" />
+      <workItem from="1593128945487" duration="39490000" />
     </task>
+    <task id="LOCAL-00001" summary="finalized hash function">
+      <created>1592795207811</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592795207811</updated>
+    </task>
+    <task id="LOCAL-00002" summary="finished train script">
+      <created>1593136366829</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593136366829</updated>
+    </task>
+    <task id="LOCAL-00003" summary="completed predict script">
+      <created>1593157880842</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593157880842</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixing errors">
+      <created>1593160475516</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593160475516</updated>
+    </task>
+    <task id="LOCAL-00005" summary="adding global averages">
+      <created>1593167956975</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1593167956975</updated>
+    </task>
+    <task id="LOCAL-00006" summary="bug fix">
+      <created>1593170903937</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1593170903937</updated>
+    </task>
+    <task id="LOCAL-00007" summary="final touch predict script">
+      <created>1593198146718</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1593198146718</updated>
+    </task>
+    <task id="LOCAL-00008" summary="closing assignment">
+      <created>1593198158909</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1593198158909</updated>
+    </task>
+    <task id="LOCAL-00009" summary="increased hash functions and final formatting">
+      <created>1593198748477</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1593198748477</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="finalized hash function" />
+    <MESSAGE value="finished train script" />
+    <MESSAGE value="completed predict script" />
+    <MESSAGE value="fixing errors" />
+    <MESSAGE value="adding global averages" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="final touch predict script" />
+    <MESSAGE value="closing assignment" />
+    <MESSAGE value="increased hash functions and final formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="increased hash functions and final formatting" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591818702367">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2440" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593161399773">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818702367" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592588598728" />
+    <state x="2440" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593161399773" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591776870884" />
     <state x="532" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591075061313">
       <screen x="0" y="0" width="1536" height="824" />
@@ -121,113 +241,517 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="630" y="298" key="#com.intellij.tools.ToolEditorDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591075900155" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1591818701238">
+    <state x="2479" y="88" key="CommitChangelistDialog2" timestamp="1593198747191">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="447" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593136383219" />
+    <state x="2479" y="88" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593198747191" />
+    <state x="447" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593170902512" />
+    <state x="74" y="73" width="1389" height="679" key="DiffContextDialog" timestamp="1593136343935">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818701238" />
+    <state x="74" y="73" width="1389" height="679" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593136343935" />
+    <state x="2012" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592781207395" />
+    <state x="2606" y="212" key="FileChooserDialogImpl" timestamp="1593161266333">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592588597141" />
+    <state x="2606" y="212" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593161266333" />
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590612222240" />
-    <state width="1493" height="302" key="GridCell.Tab.0.bottom" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.0.bottom" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="387" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
+    <state width="1875" height="238" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.0.center" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.0.center" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="387" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
+    <state width="1875" height="238" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.0.left" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.0.left" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="387" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
+    <state width="1875" height="238" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.0.right" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.0.right" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="387" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
+    <state width="1875" height="238" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.bottom" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.1.bottom" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718083" />
+    <state width="1493" height="387" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
+    <state width="1875" height="238" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.center" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.1.center" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718083" />
+    <state width="1493" height="387" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
+    <state width="1875" height="238" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.left" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.1.left" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718082" />
+    <state width="1493" height="387" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
+    <state width="1875" height="238" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1493" height="302" key="GridCell.Tab.1.right" timestamp="1591943873435">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1875" height="238" key="GridCell.Tab.1.right" timestamp="1593163652585">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591818718083" />
+    <state width="1493" height="387" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
+    <state width="1875" height="238" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593163652585" />
     <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state x="370" y="110" key="SettingsEditor" timestamp="1591566370305">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2383" y="166" key="SettingsEditor" timestamp="1592783400801">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="370" y="110" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591566370305" />
-    <state x="2383" y="166" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590082090695" />
+    <state x="370" y="110" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592003827813" />
+    <state x="2383" y="166" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592783400801" />
+    <state x="2665" y="254" key="VcsDiffUtil.ChangesDialog" timestamp="1592795304867">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2665" y="254" key="VcsDiffUtil.ChangesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592795304867" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1591995549870">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1591816304543" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591995549870" />
-    <state x="330" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1591625519023">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2333" y="187" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1592785106392">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="2333" y="187" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592785106392" />
     <state x="330" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1591625519023" />
-    <state x="498" y="178" width="538" height="538" key="search.everywhere.popup" timestamp="1590987460746">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2587" y="119" width="586" height="801" key="find.popup" timestamp="1592947913819">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="498" y="178" width="538" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1590987460746" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590427993724" />
+    <state x="2587" y="119" width="586" height="801" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592947913819" />
+    <state x="2723" y="292" key="refactoring.ChangeSignatureDialog" timestamp="1593134022051">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2723" y="292" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593134022051" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593131200457">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592537528982" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593131200457" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_2/task1_individual_approach.py</url>
           <line>124</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_2/test_script.py</url>
           <line>274</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_2/test_script.py</url>
           <line>303</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_solns_SR/INF553-DataMining/2/submission/haopeng_song_task2.py</url>
           <line>266</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_2/task2.py</url>
           <line>187</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_2/task1_individual_approach.py</url>
           <line>92</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_2/task2.py</url>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>136</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>142</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>146</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>147</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>155</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>160</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>166</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>174</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>181</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>200</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/assignment_solns/INF_553/ay_hw_3/python/task1.py</url>
+          <line>209</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>138</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>172</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>177</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>181</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>186</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>190</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>193</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>202</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>217</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>228</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>240</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>245</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>252</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>255</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>257</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>256</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>264</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/test_script_2.py</url>
+          <line>271</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/task2predict.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/task2predict.py</url>
+          <line>86</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/task2predict.py</url>
+          <line>100</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/task2predict.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/task2train.py</url>
+          <line>150</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/task2train.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task2/task2train.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>123</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>177</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>184</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>192</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>205</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/test_script.py</url>
+          <line>216</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/task1.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/task1.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/task1.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/task1.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task1/task1.py</url>
+          <line>127</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>236</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>161</line>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>220</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>208</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>203</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>216</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>173</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>168</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>183</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>200</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>278</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>288</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3train.py</url>
+          <line>195</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>203</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>222</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>234</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_script_3.py</url>
+          <line>233</line>
+          <option name="timeStamp" value="164" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/task3predict.py</url>
+          <line>209</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_3_predict.py</url>
+          <line>174</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_3_predict.py</url>
+          <line>167</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_3_predict.py</url>
+          <line>158</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_3_predict.py</url>
+          <line>149</line>
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_3_predict.py</url>
+          <line>184</line>
+          <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_3/test_3_predict.py</url>
+          <line>231</line>
+          <option name="timeStamp" value="184" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1591818704336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
     <SUITE FILE_PATH="coverage/Assignments$task1.coverage" NAME="INF Coverage Results" MODIFIED="1591574554770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
+    <SUITE FILE_PATH="coverage/Assignments$verification_code.coverage" NAME="verification_code Coverage Results" MODIFIED="1593131763727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_3" />
+    <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1593161269329" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_3" />
   </component>
 </project>

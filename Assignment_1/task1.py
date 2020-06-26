@@ -34,18 +34,20 @@ if __name__ == '__main__':
     results['D'] = user_review_count_sorted.take(int(argv[5]))
 
     # 1.E
-    words_count_rdd = reviews_json.map(lambda x: (x['text'])).flatMap(lambda line: line.lower().split()).map(
-        lambda x: (x.strip(), 1)).reduceByKey(lambda a, b: a + b)
     with open(argv[3]) as f:
         f_stopwords = f.read()
         f.close()
 
     stopwords_list = [x.strip().lower() for x in f_stopwords.split()]
-    stopwords_list.extend(["(", "[", ",", ".", "!", "?", ":", ";", "]", ")"])
-    results['E'] = words_count_rdd.filter(lambda x: x[0] not in stopwords_list).sortBy(
-        lambda x: x[1], ascending=False).map(lambda x: x[0]).take(int(argv[5]))
+
+    words_count_rdd = reviews_json.map(lambda x: (x['text'])).flatMap(lambda line: line.lower().split()).map(
+        lambda x: (x.strip(' ([,.!?:;])'), 1)).filter(
+        lambda x: x[0] is not "" and x[0] not in stopwords_list).reduceByKey(lambda a, b: a + b)
+
+    results['E'] = words_count_rdd.sortBy(lambda x: x[1], ascending=False).map(lambda x: x[0]).take(int(argv[6]))
 
     with open(argv[2], 'w') as results_file:
         results_file.write(json.dumps(results))
         results_file.close()
+
 
