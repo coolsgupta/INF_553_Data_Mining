@@ -103,23 +103,23 @@ def makePrediction(mixed, data_dict, model_type, avg_score_dict=None,
 
 if __name__ == '__main__':
     start = time.time()
-    train_file_path = "asnlib/publicdata/train_review.json"
-    test_file_path = "asnlib/publicdata/test_review_ratings.json"
-    export_model_file_path = "task3.model"
-    output_file_path = "task3user.predict"
-    model_type = "user_based"  # either "item_based" or "user_based"
+    # train_file_path = "asnlib/publicdata/train_review.json"
+    # test_file_path = "asnlib/publicdata/test_review_ratings.json"
+    # export_model_file_path = "task3.model"
+    # output_file_path = "task3user.predict"
+    # model_type = "user_based"  # either "item_based" or "user_based"
+    # bus_avg_file_path = "asnlib/publicdata/business_avg.json"
+    # user_avg_file_path = "asnlib/publicdata/user_avg.json"
+
+    train_file_path = sys.argv[1]
+    test_file_path = sys.argv[2]
+    export_model_file_path = sys.argv[3]
+    output_file_path = sys.argv[4]
+    model_type = sys.argv[5]
     bus_avg_file_path = "asnlib/publicdata/business_avg.json"
     user_avg_file_path = "asnlib/publicdata/user_avg.json"
 
-    # train_file_path = sys.argv[1]
-    # test_file_path = sys.argv[2]
-    # export_model_file_path = sys.argv[3]
-    # output_file_path = sys.argv[4]
-    # model_type = sys.argv[5]
-    # bus_avg_file_path = "../resource/asnlib/publicdata/business_avg.json"
-    # user_avg_file_path = "../resource/asnlib/publicdata/user_avg.json"
-
-    conf = SparkConf().setMaster("local") \
+    conf = SparkConf().setMaster("local[4]") \
         .setAppName("ay_hw_3_task3_predict") \
         .set("spark.executor.memory", "4g") \
         .set("spark.driver.memory", "4g")
@@ -155,6 +155,7 @@ if __name__ == '__main__':
             .groupByKey().map(lambda uid_bids: (user_index_dict[uid_bids[0]],
                                                 [(bus_index_dict[bid_score[0]], bid_score[1]) for bid_score in
                                                  list(set(uid_bids[1]))]))
+        train_uid_bidx_score_collection = train_uid_bidx_score_rdd.collect()
 
         # tokenized uid and bidx from test file
         # tuple(uidx, bidx)
@@ -163,6 +164,7 @@ if __name__ == '__main__':
             .map(lambda kv: (user_index_dict.get(kv[USER_ID], -1),
                              bus_index_dict.get(kv[BUSINESS_ID], -1))) \
             .filter(lambda uid_bid: uid_bid[0] != -1 and uid_bid[1] != -1)
+        test_uid_bidx_collection = test_uid_bidx_rdd.collect()
 
         # read avg info from json file and convert it into dict
         # dict(bid_str: avg_score)
@@ -184,6 +186,7 @@ if __name__ == '__main__':
             .map(lambda kvv: {"user_id": reversed_index_user_dict[kvv[0]],
                               "business_id": reversed_index_bus_dict[kvv[1][0]],
                               "stars": kvv[1][1]})
+        output_pair_collection = output_pair.collect()
 
     elif model_type == USER_BASED_MODEL:
         #  dict((uidx_pair): similarity)
