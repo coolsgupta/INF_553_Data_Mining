@@ -42,31 +42,29 @@ def write_results(results, file_path):
     file.close()
 
 
-def computeSimilarity(dict1, dict2):
-    """
-    compute Pearson Correlation Similarity
-    :param dict1:
-    :param dict2:
-    :return: a float number
-    """
-    co_rated_user = list(set(dict1.keys()) & (set(dict2.keys())))
-    val1_list, val2_list = list(), list()
-    [(val1_list.append(dict1[user_id]),
-      val2_list.append(dict2[user_id])) for user_id in co_rated_user]
-
-    avg1 = sum(val1_list) / len(val1_list)
-    avg2 = sum(val2_list) / len(val2_list)
-
-    numerator = sum(map(lambda pair: (pair[0] - avg1) * (pair[1] - avg2), zip(val1_list, val2_list)))
-
-    if numerator == 0:
-        return 0
-    denominator = math.sqrt(sum(map(lambda val: (val - avg1) ** 2, val1_list))) * \
-                  math.sqrt(sum(map(lambda val: (val - avg2) ** 2, val2_list)))
-    if denominator == 0:
+def get_pearson_correlation(ratings_set_1, ratings_set_2):
+    user_intersection = list(set(ratings_set_1.keys()).intersection(set(ratings_set_2.keys())))
+    if not user_intersection:
         return 0
 
-    return numerator / denominator
+    intersection_ratings_1 = [ratings_set_1[id] for id in user_intersection]
+    intersection_ratings_2 = [ratings_set_2[id] for id in user_intersection]
+
+    rating_1_avg = sum(intersection_ratings_1) / len(intersection_ratings_1)
+    rating_2_avg = sum(intersection_ratings_2) / len(intersection_ratings_2)
+
+    r1_r2_dot_product = sum(map(lambda pair: (pair[0] - rating_1_avg) * (pair[1] - rating_2_avg), zip(intersection_ratings_1, intersection_ratings_2)))
+
+    if r1_r2_dot_product == 0:
+        return 0
+
+    r1_r2_mag_prod = math.sqrt(sum(map(lambda val: (val - rating_1_avg) ** 2, intersection_ratings_1))) * \
+                  math.sqrt(sum(map(lambda val: (val - rating_2_avg) ** 2, intersection_ratings_2)))
+
+    if r1_r2_mag_prod == 0:
+        return 0
+
+    return r1_r2_dot_product / r1_r2_mag_prod
 
 
 if __name__ == '__main__':
@@ -110,31 +108,31 @@ if __name__ == '__main__':
 
     inverse_business_tokens_dict = {bid: token for token, bid in business_tokens_dict.items()}
 
-    # create hash functions
-    min_hash_func_list = get_min_hash_functions(50, len(user_tokens_dict) * 2)
-
     # get user business tokenized maps
     user_business_rating_tokenized_sets = user_business_rating_sets\
         .map(lambda x: (user_tokens_dict.get(x[0]), business_tokens_dict.get(x[1]), x[2]))
 
-    # create user_business_tokenized_pairs
-    business_user_tokenized_pairs = user_business_rating_tokenized_sets\
-        .map(lambda x: (x[1], x[0]))
-
-    # create business and rating user list
-    business_user_tokenized_map = business_user_tokenized_pairs\
-        .groupByKey()\
-        .mapValues(lambda x: list(set(x)))\
-        .filter(lambda x: len(x[1]) >= 3)
-
-    # create user and rated business  list
-    user_business_tokenized_dict = business_user_tokenized_map\
-        .flatMap(lambda x: [(user, x[0]) for user in x[1]])\
-        .groupByKey()\
-        .mapValues(lambda x: list(set(x)))\
-        .collectAsMap()
-
     if argv[3] == 'user_based':
+        # create hash functions
+        min_hash_func_list = get_min_hash_functions(50, len(user_tokens_dict) * 2)
+
+        # create user_business_tokenized_pairs
+        business_user_tokenized_pairs = user_business_rating_tokenized_sets \
+            .map(lambda x: (x[1], x[0]))
+
+        # create business and rating user list
+        business_user_tokenized_map = business_user_tokenized_pairs \
+            .groupByKey() \
+            .mapValues(lambda x: list(set(x))) \
+            .filter(lambda x: len(x[1]) >= 3)
+
+        # create user and rated business  list
+        user_business_tokenized_dict = business_user_tokenized_map \
+            .flatMap(lambda x: [(user, x[0]) for user in x[1]]) \
+            .groupByKey() \
+            .mapValues(lambda x: list(set(x))) \
+            .collectAsMap()
+
         # create user business rating map
         user_business_rating_map_dict = user_business_rating_tokenized_sets\
             .map(lambda x: (x[0], (x[1], x[2])))\
@@ -155,7 +153,7 @@ if __name__ == '__main__':
 
         # get candidate pairs by applying LSH
         candidate_pairs = signature_matrix_rdd \
-            .flatMap(lambda x: [(tuple([i, tuple(x[1][i:i + 1])]), x[0]) for i in range(0, 30)]) \
+            .flatMap(lambda x: [(tuple([i, tuple(x[1][i:i + 1])]), x[0]) for i in range(0, 50)]) \
             .groupByKey() \
             .map(lambda x: list(x[1])) \
             .filter(lambda val: len(val) > 1) \
@@ -169,7 +167,7 @@ if __name__ == '__main__':
 
         # filter pairs based on positive pearson correlation
         pearson_similar_pairs = jaccard_similar_users\
-            .map(lambda x: (x[0], computeSimilarity(user_business_rating_map_dict[x[0][0]], user_business_rating_map_dict[x[0][1]])))\
+            .map(lambda x: (x[0], get_pearson_correlation(user_business_rating_map_dict[x[0][0]], user_business_rating_map_dict[x[0][1]])))\
             .filter(lambda kv: kv[1] > 0)
 
         # final model in json format
@@ -181,30 +179,37 @@ if __name__ == '__main__':
         # create business user rating map
         business_user_rating_map = user_business_rating_tokenized_sets \
             .map(lambda x: (x[1], (x[0], x[2]))) \
-            .groupByKey() \
-            .mapValues(lambda x: {user_rating_pair[0]: user_rating_pair[1] for user_rating_pair in list(x)})
+            .groupByKey()\
+            .mapValues(lambda x: list(x))\
+            .filter(lambda x: len(x[1]) >= 3) \
+            .mapValues(lambda x: {user_rating_pair[0]: user_rating_pair[1] for user_rating_pair in x})
 
         business_user_rating_map_dict = business_user_rating_map.collectAsMap()
 
         # collect all business tokens
         candidate_business_tokens = business_user_rating_map.map(lambda x: x[0])
 
-        # candidate pairs based on co-rated users
         filtered_candidate_pairs = candidate_business_tokens\
             .cartesian(candidate_business_tokens)\
             .filter(lambda x: x[0] < x[1])\
-            .filter(lambda x: len(set(business_user_rating_map_dict.get(x[0], [])).intersection(set(business_user_rating_map_dict.get(x[1], [])))) >= 3)
+            .filter(lambda x: len(set(business_user_rating_map_dict.get(x[0], {}).keys()).intersection(set(business_user_rating_map_dict.get(x[1], {}).keys()))) >= 3)
+
+        # print(filtered_candidate_pairs.count())
 
         # filter pairs based on positive pearson correlation
         pearson_similar_pairs = filtered_candidate_pairs\
-            .map(lambda x: (x, computeSimilarity(business_user_rating_map_dict[x[0]], business_user_rating_map_dict[x[1]])))\
+            .map(lambda x: (x, get_pearson_correlation(business_user_rating_map_dict.get(x[0]), business_user_rating_map_dict[x[1]])))\
             .filter(lambda x: x[1] > 0)
 
         # final model in json format
         final_model = pearson_similar_pairs \
-            .map(lambda x: {"b1": inverse_user_tokens_dict[x[0][0]], "b2": inverse_user_tokens_dict[x[0][1]], "sim": x[1]}) \
+            .map(lambda x: {"b1": inverse_business_tokens_dict[x[0][0]], "b2": inverse_business_tokens_dict[x[0][1]], "sim": x[1]}) \
             .collect()
 
     write_results(final_model, argv[2])
+
+    print('Duration: {:.2f}'.format(time.time() - start_time))
+
+    print('completed')
 
 
