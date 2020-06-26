@@ -95,7 +95,7 @@ if __name__ == '__main__':
 
     user_tokens_dict = user_tokens.collectAsMap()
 
-    inverse_user_tokens_dict = {bid: token for token, bid in user_tokens_dict.items()}
+    inverse_user_tokens_dict = {uid: token for token, uid in user_tokens_dict.items()}
 
     # create business tokens
     candidate_business_tokens = user_business_rating_sets \
@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
     if argv[3] == 'user_based':
         # create hash functions
-        min_hash_func_list = get_min_hash_functions(50, len(user_tokens_dict) * 2)
+        min_hash_func_list = get_min_hash_functions(60, len(user_tokens_dict) * 2)
 
         # create user_business_tokenized_pairs
         business_user_tokenized_pairs = user_business_rating_tokenized_sets \
@@ -153,7 +153,7 @@ if __name__ == '__main__':
 
         # get candidate pairs by applying LSH
         candidate_pairs = signature_matrix_rdd \
-            .flatMap(lambda x: [(tuple([i, tuple(x[1][i:i + 1])]), x[0]) for i in range(0, 50)]) \
+            .flatMap(lambda x: [(tuple([i, tuple(x[1][i:i + 1])]), x[0]) for i in range(0, 60)]) \
             .groupByKey() \
             .map(lambda x: list(x[1])) \
             .filter(lambda val: len(val) > 1) \
@@ -168,11 +168,15 @@ if __name__ == '__main__':
         # filter pairs based on positive pearson correlation
         pearson_similar_pairs = jaccard_similar_users\
             .map(lambda x: (x[0], get_pearson_correlation(user_business_rating_map_dict[x[0][0]], user_business_rating_map_dict[x[0][1]])))\
-            .filter(lambda kv: kv[1] > 0)
+            .filter(lambda x: x[1] > 0)
 
         # final model in json format
         final_model = pearson_similar_pairs\
-            .map(lambda kv: {"u1": inverse_user_tokens_dict[kv[0][0]], "u2": inverse_user_tokens_dict[kv[0][1]], "sim": kv[1]})\
+            .map(lambda x: {
+                "u1": inverse_user_tokens_dict[x[0][0]],
+                "u2": inverse_user_tokens_dict[x[0][1]],
+                "sim": x[1]
+            })\
             .collect()
 
     else:
@@ -203,7 +207,11 @@ if __name__ == '__main__':
 
         # final model in json format
         final_model = pearson_similar_pairs \
-            .map(lambda x: {"b1": inverse_business_tokens_dict[x[0][0]], "b2": inverse_business_tokens_dict[x[0][1]], "sim": x[1]}) \
+            .map(lambda x: {
+                "b1": inverse_business_tokens_dict[x[0][0]],
+                "b2": inverse_business_tokens_dict[x[0][1]],
+                "sim": x[1]
+            }) \
             .collect()
 
     write_results(final_model, argv[2])
@@ -211,5 +219,3 @@ if __name__ == '__main__':
     print('Duration: {:.2f}'.format(time.time() - start_time))
 
     print('completed')
-
-
