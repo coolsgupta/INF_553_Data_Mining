@@ -26,9 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="finished train script">
-      <change afterPath="$PROJECT_DIR$/Assignment_4/task1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment_4/task2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_4/.ipynb_checkpoints/task_1-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_4/task1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_4/task1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_4/task_1.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +171,7 @@
       <workItem from="1592860409269" duration="20113000" />
       <workItem from="1592947825421" duration="25077000" />
       <workItem from="1593128945487" duration="39490000" />
-      <workItem from="1593209512498" duration="22135000" />
+      <workItem from="1593209512498" duration="23184000" />
     </task>
     <task id="LOCAL-00001" summary="finalized hash function">
       <created>1592795207811</created>

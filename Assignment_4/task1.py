@@ -24,7 +24,7 @@ if __name__ == '__main__':
     conf = SparkConf()
     # conf.set("spark.driver.memory", "4g")
     # conf.set("spark.executor.memory", "4g")
-    conf.setMaster('local[16]')
+    conf.setMaster('local[8]')
     conf.setAppName('Assignment_4')
     sc = SparkContext.getOrCreate(conf)
     spark = SparkSession(sc)
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         .filter(lambda x: len(x[1]) >= filter_threshold)\
         .map(lambda x: x[0])
 
-    user_pairs_collection = user_pairs.collect()
+    # user_pairs_collection = user_pairs.collect()
 
     # create vertex rdd
     nodes = user_pairs\
