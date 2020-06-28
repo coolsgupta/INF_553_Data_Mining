@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand />
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
@@ -11,9 +16,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="finished train script">
-      <change afterPath="$PROJECT_DIR$/Assignment_4/shwetanshu_rohatgi_task2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment_4/arron_soln.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment_4/test/shwetanshu_rohatgi_task2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment_4/soln.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_4/soln.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment_4/soln.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_4/test/soln.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment_4/task2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_4/task2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_4/soln.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Assignment_4/arron_soln.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,11 +72,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_4\test" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_4" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_3\task1" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_3\task2" />
       <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_2\asnlib\publicdata" />
-      <recent name="D:\sachin\MS\USC\Course Work\INF 553 Data Mining\Assignments\Assignment_1" />
     </key>
   </component>
   <component name="RunManager" selected="Python.verification_code">
@@ -108,7 +115,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_4/soln.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Assignment_4/arron_soln.py" />
       <option name="PARAMETERS" value="7 asnlib/publicdata/ub_sample_data.csv betweeness_output.txt test_1.result" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -155,7 +162,7 @@
       <workItem from="1592860409269" duration="20113000" />
       <workItem from="1592947825421" duration="25077000" />
       <workItem from="1593128945487" duration="39490000" />
-      <workItem from="1593209512498" duration="37568000" />
+      <workItem from="1593209512498" duration="40905000" />
     </task>
     <task id="LOCAL-00001" summary="finalized hash function">
       <created>1592795207811</created>
@@ -227,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593295414859</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="deleting and reformatting">
+      <created>1593316029743</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1593316029743</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,14 +276,15 @@
     <MESSAGE value="closing assignment" />
     <MESSAGE value="increased hash functions and final formatting" />
     <MESSAGE value="removed unnecesary collect" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unnecesary collect" />
+    <MESSAGE value="deleting and reformatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleting and reformatting" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2440" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593304114236">
+    <state x="2440" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593319802207">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592588598728" />
-    <state x="2440" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593304114236" />
+    <state x="2440" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593319802207" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591776870884" />
     <state x="532" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591075061313">
       <screen x="0" y="0" width="1536" height="824" />
@@ -294,59 +309,59 @@
     </state>
     <state x="74" y="73" width="1389" height="679" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593136343935" />
     <state x="2012" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593308934044" />
-    <state x="2606" y="212" key="FileChooserDialogImpl" timestamp="1593302609272">
+    <state x="2606" y="212" key="FileChooserDialogImpl" timestamp="1593319800946">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592588597141" />
-    <state x="2606" y="212" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593302609272" />
+    <state x="2606" y="212" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593319800946" />
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590612222240" />
-    <state width="1877" height="313" key="GridCell.Tab.0.bottom" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.0.bottom" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
-    <state width="1877" height="313" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1877" height="313" key="GridCell.Tab.0.center" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.0.center" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
-    <state width="1877" height="313" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1877" height="313" key="GridCell.Tab.0.left" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.0.left" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
-    <state width="1877" height="313" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1877" height="313" key="GridCell.Tab.0.right" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.0.right" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049662342" />
-    <state width="1877" height="313" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1877" height="313" key="GridCell.Tab.1.bottom" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
-    <state width="1877" height="313" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1877" height="313" key="GridCell.Tab.1.center" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.1.center" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
-    <state width="1877" height="313" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1877" height="313" key="GridCell.Tab.1.left" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.1.left" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
-    <state width="1877" height="313" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
-    <state width="1877" height="313" key="GridCell.Tab.1.right" timestamp="1593314658674">
+    <state width="1877" height="313" key="GridCell.Tab.1.right" timestamp="1593320180784">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="387" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593049665100" />
-    <state width="1877" height="313" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593314658674" />
+    <state width="1877" height="313" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593320180784" />
     <state width="1493" height="302" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591943873435" />
     <state x="2383" y="166" key="SettingsEditor" timestamp="1593227240440">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -763,76 +778,91 @@
           <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>256</line>
           <option name="timeStamp" value="195" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>268</line>
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>252</line>
           <option name="timeStamp" value="197" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>270</line>
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>351</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>276</line>
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>151</line>
+          <line>72</line>
           <option name="timeStamp" value="201" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>96</line>
+          <line>17</line>
           <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>320</line>
           <option name="timeStamp" value="207" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>292</line>
           <option name="timeStamp" value="209" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/soln.py</url>
+          <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>310</line>
           <option name="timeStamp" value="210" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>140</line>
+          <line>61</line>
           <option name="timeStamp" value="211" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>149</line>
+          <line>70</line>
           <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_4/arron_soln.py</url>
+          <line>337</line>
+          <option name="timeStamp" value="214" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_4/arron_soln.py</url>
+          <line>384</line>
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Assignment_4/arron_soln.py</url>
+          <line>393</line>
+          <option name="timeStamp" value="216" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Assignments$task1.coverage" NAME="INF Coverage Results" MODIFIED="1591574554770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_2" />
-    <SUITE FILE_PATH="coverage/Assignments$verification_code.coverage" NAME="verification_code Coverage Results" MODIFIED="1593309142005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_4" />
+    <SUITE FILE_PATH="coverage/Assignments$verification_code.coverage" NAME="verification_code Coverage Results" MODIFIED="1593319908685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_4" />
     <SUITE FILE_PATH="coverage/Assignments$INF.coverage" NAME="INF Coverage Results" MODIFIED="1593309408090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Assignment_4" />
   </component>
 </project>
