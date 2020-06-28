@@ -307,6 +307,7 @@ while (1):
     betweenness_temp = v_rdd.flatMap(lambda x: calculate_betweenness(x, adjacency_matrix, n_vertices)) \
         .reduceByKey(lambda x, y: (x + y)).map(lambda x: (x[0], float(x[1] / 2))).sortByKey().map(
         lambda x: (x[1], x[0])).sortByKey(ascending=False).map(lambda x: (x[1], x[0]))
+    betweenness_temp_collection = betweenness_temp.collect()
     first_edge_to_remove = betweenness_temp.take(1)[0][0]
 
     if (modularity >= highest_modularity):

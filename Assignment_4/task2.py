@@ -83,6 +83,14 @@ def calculate_betweenness(root_node, adjacent_vertices):
     return betweenness_list
 
 
+def get_graph_modularity(adjacency_dict, bfs_traversal_map):
+    [[ for vertex in  pair[0]] for pair in bfs_traversal_map]
+
+# def get_connected_components:
+
+
+
+
 if __name__ == '__main__':
     start_time = time.time()
 
@@ -128,6 +136,16 @@ if __name__ == '__main__':
     adjacency_list = edges.groupByKey().mapValues(lambda x: list(set(x)))
 
     adjacency_dict = adjacency_list.collectAsMap()
+
+    # calculate betweeness score for each edge
+    edge_betweeness_scores = nodes\
+        .flatMap(lambda x: calculate_betweenness(x, adjacency_dict))\
+        .reduceByKey(lambda a, b: a + b)\
+        .map(lambda x: (x[0], x[1]/2))\
+        .sortBy(lambda x: (-x[1], x[0]))
+
+    edge_betweeness_scores_collection = edge_betweeness_scores.collect()
+
 
     print('Duration: {:.2f}'.format(time.time() - start_time))
 
