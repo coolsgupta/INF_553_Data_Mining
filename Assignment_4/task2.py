@@ -5,7 +5,7 @@ findspark.init()
 import itertools
 import time
 from pyspark import SparkContext, SparkConf
-
+import random
 
 def write_results(result, output_file):
     with open(output_file, 'w') as result_file:
@@ -92,7 +92,90 @@ def get_GN_betweeness_scores(**kwargs):
     return edge_betweeness_scores_sorted_list
 
 
-def detect_communities(**kwargs):
+def get_current_communities(**kwargs):
+    vertices = kwargs.get('vertices')
+    adjacency_map_dict = kwargs['adjacency_map_dict']
+
+    communities = list()  # result will be return
+    need2visit = list()  # a stack actually
+    temp_node_set = set()  # using to save each communities
+    visited = set()  # track which node has been visited
+
+    # random pick a root to detect communities
+    random_root = vertices[random.randint(0, len(vertices) - 1)]
+    temp_node_set.add(random_root)
+    need2visit.append(random_root)
+    # if still has some node we haven't visit, do the loop
+    while len(visited) != len(vertices):
+        while len(need2visit) > 0:
+            parent_node = need2visit.pop(0)
+            temp_node_set.add(parent_node)
+            visited.add(parent_node)
+            for children in adjacency_map_dict[parent_node]:
+                if children not in visited:
+                    temp_node_set.add(children)
+                    need2visit.append(children)
+                    visited.add(children)
+
+        communities.append(sorted(temp_node_set))
+        temp_node_set = set()
+        if len(vertices) > len(visited):
+            # pick one from rest of unvisited nodes
+            need2visit.append(set(vertices).difference(visited).pop())
+
+    return communities
+
+
+def find_communities(**kwargs):
+    vertices = kwargs.get('vertices')
+    edge_betweenness_scores = kwargs['edge_betweenness_scores']
+    adjacency_map_dict = kwargs['adjacency_map_dict']
+    edges = kwargs['edges']
+    modularity = float("-inf")
+    communities = []
+
+    while True:
+        if edge_betweenness_scores:
+            removed_edge = edge_betweenness_scores.pop(0)[0]
+            try:
+                adjacency_map[removed_edge[0]].remove(removed_edge[1])
+
+            except:
+                pass
+
+            try:
+                adjacency_map[removed_edge[1]].remove(removed_edge[0])
+
+            except:
+                pass
+
+            current_communities = get_current_communities(
+                vertices=vertices,
+                adjacency_map_dict=adjacency_map_dict
+            )
+
+            sum_mod = 0
+            for com in current_communities:
+                sum_mod += sum(
+                    [
+                        (1 if tuple(sorted([pair[0], pair[1]])) in edges else 0) -
+                        (len(adjacency_map_dict[pair[0]]) * len(adjacency_map_dict[pair[1]]) / (2 * len(edges)))
+                        for pair in itertools.combinations(list(com), 2)
+                    ]
+                )
+
+            current_modularity = sum_mod / (2 * len(edges))
+
+            if current_modularity < modularity:
+                break
+
+            communities = current_communities
+            modularity = current_modularity
+
+    return sorted(
+        communities,
+        key=lambda item: (len(item), item[0], item[1])
+    )
 
 
 
@@ -151,9 +234,16 @@ if __name__ == '__main__':
         adjacency_map_dict=adjacency_dict
     )
 
-    detected_communities = detect_communities()
-
     write_results(edge_betweenness_scores_list, argv[3])
+
+    detected_communities = find_communities(
+        vertices=nodes_collection,
+        edge_betweenness_scores=edge_betweenness_scores_list,
+        adjacency_map_dict=adjacency_dict,
+        edges=user_pairs_collection
+    )
+
+    write_results(detected_communities, argv[4])
 
 
 
