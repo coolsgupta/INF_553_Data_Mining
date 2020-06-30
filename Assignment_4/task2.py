@@ -101,43 +101,46 @@ def get_current_communities(**kwargs):
 
     # removing the edge with the highest betweeness scores
     removed_edge = edge_betweenness_scores[0][0]
-    try:
-        adjacency_map[removed_edge[0]].remove(removed_edge[1])
+    if adjacency_map_dict[removed_edge[0]] is not None:
+        try:
+            adjacency_map_dict[removed_edge[0]].remove(removed_edge[1])
 
-    except:
-        pass
+        except:
+            pass
 
-    try:
-        adjacency_map[removed_edge[1]].remove(removed_edge[0])
+    if adjacency_map_dict[removed_edge[1]] is not None:
+        try:
+            adjacency_map_dict[removed_edge[1]].remove(removed_edge[0])
 
-    except:
-        pass
+        except:
+            pass
 
     # find communities after removing the edge in the previous step
     current_coms = []
     traversal_stack = []
     traversal_order_set = set()
     nodes_visited = set()
+    len_vertices = len(vertices)
 
-    random_root = vertices[random.randint(0, len(vertices) - 1)]
+    random_root = vertices[random.randint(0, len_vertices - 1)]
     traversal_order_set.add(random_root)
     traversal_stack.append(random_root)
 
-    while len(nodes_visited) != len(vertices):
+    while len(nodes_visited) != len_vertices:
         while len(traversal_stack) > 0:
             immediate_parent = traversal_stack.pop(0)
             traversal_order_set.add(immediate_parent)
             nodes_visited.add(immediate_parent)
-            for children in adjacency_map_dict[immediate_parent]:
-                if children not in nodes_visited:
-                    traversal_order_set.add(children)
-                    traversal_stack.append(children)
-                    nodes_visited.add(children)
+            for child in adjacency_map_dict[immediate_parent]:
+                if child not in nodes_visited:
+                    traversal_order_set.add(child)
+                    traversal_stack.append(child)
+                    nodes_visited.add(child)
 
         current_coms.append(sorted(traversal_order_set))
         traversal_order_set = set()
-        if len(vertices) > len(nodes_visited):
-            # pick one from rest of unvisited nodes
+
+        if len_vertices > len(nodes_visited):
             traversal_stack.append(set(vertices).difference(nodes_visited).pop())
 
     # calculate modularity
@@ -155,12 +158,12 @@ def get_current_communities(**kwargs):
                             ) * len(
                                     adjacency_map_dict[vertex_pair[1]]
                             ) / (
-                                    2 * len(vertices)
+                                    2 * len(edges)
                             )
                     )
             )
 
-    return adjacency_map_dict, mod_sum / (2 * len(vertices)), current_coms
+    return adjacency_map_dict, mod_sum / (2 * len(edges)), current_coms
 
 
 def find_communities(**kwargs):
