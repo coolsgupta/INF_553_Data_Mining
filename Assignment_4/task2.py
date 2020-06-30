@@ -144,26 +144,33 @@ def get_current_communities(**kwargs):
             traversal_stack.append(set(vertices).difference(nodes_visited).pop())
 
     # calculate modularity
+    remaining_edges = set()
+    for start, end in adjacency_map_dict.items():
+        for e in end:
+            k=tuple(sorted([start,e]))
+
+            if k not in remaining_edges:
+                remaining_edges.add(k)
+
+    # remaining_edges = len(remaining_edges)
+
     mod_sum = 0
     for cluster in current_coms:
         for vertex_pair in itertools.combinations(list(cluster), 2):
             mod_sum += (
                     (
-                        1 if sorted(
-                            [vertex_pair[0], vertex_pair[1]]
-                        ) in edges else 0
-                    ) - (
+                        1 if sorted(vertex_pair) in edges else 0) - (
                             len(
                                 adjacency_map_dict[vertex_pair[0]]
                             ) * len(
                                     adjacency_map_dict[vertex_pair[1]]
                             ) / (
-                                    2 * len(edges)
+                                    2 * len(remaining_edges)
                             )
                     )
             )
 
-    return adjacency_map_dict, mod_sum / (2 * len(edges)), current_coms
+    return adjacency_map_dict, mod_sum/(2*len(remaining_edges)), current_coms
 
 
 def find_communities(**kwargs):
@@ -284,10 +291,3 @@ if __name__ == '__main__':
     print('Duration: {:.2f}'.format(time.time() - start_time))
 
     print('completed')
-
-    # adjacency_map = edges
-    # user_pairs = A_matrix
-    # node_weight_map = vertex_weight_map
-    # nodes_collection = vertexes
-    # original_edges = copy of initial adjacency_map
-    # m = 498 number of edges
