@@ -24,7 +24,7 @@ def compute_bfs_traversal_from_node(root_node, adjacency_map_dict):
     visited_nodes_set = set()
     traversal_stack = [root_node]
 
-    while (traversal_stack):
+    while traversal_stack:
         parent = traversal_stack.pop(0)
         visited_nodes_set.add(parent)
         for child in adjacency_map_dict.get(parent):
@@ -145,12 +145,12 @@ def get_current_communities(**kwargs):
 
     # calculate modularity
     remaining_edges = set()
-    for start, end in adjacency_map_dict.items():
-        for e in end:
-            k=tuple(sorted([start,e]))
+    for src, dest in adjacency_map_dict.items():
+        for dest_node in dest:
+            graph_edge = tuple(sorted([src, dest_node]))
 
-            if k not in remaining_edges:
-                remaining_edges.add(k)
+            if graph_edge not in remaining_edges:
+                remaining_edges.add(graph_edge)
 
     # remaining_edges = len(remaining_edges)
 
@@ -219,7 +219,6 @@ def find_communities(**kwargs):
     )
 
 
-
 if __name__ == '__main__':
     start_time = time.time()
 
@@ -258,10 +257,6 @@ if __name__ == '__main__':
         .distinct()
     nodes_collection = sorted(nodes.collect())
 
-    # get all edges
-    # edges = user_pairs.union(user_pairs.map(lambda x: (x[1], x[0])))
-    # edges_collection = edges.collect()
-
     adjacency_map = user_pairs \
         .union(user_pairs.map(lambda x: (x[1], x[0]))) \
         .groupByKey() \
@@ -285,8 +280,6 @@ if __name__ == '__main__':
     )
 
     write_results(detected_communities, argv[4])
-
-
 
     print('Duration: {:.2f}'.format(time.time() - start_time))
 

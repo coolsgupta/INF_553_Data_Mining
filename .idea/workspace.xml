@@ -16,7 +16,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71831ff0-ce6d-4a55-a47e-dc8a9e9d5077" name="Default Changelist" comment="finished train script">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment_4/task2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment_4/task2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +161,7 @@
       <workItem from="1592947825421" duration="25077000" />
       <workItem from="1593128945487" duration="39490000" />
       <workItem from="1593209512498" duration="79776000" />
-      <workItem from="1593547693114" duration="4603000" />
+      <workItem from="1593547693114" duration="5054000" />
     </task>
     <task id="LOCAL-00001" summary="finalized hash function">
       <created>1592795207811</created>
@@ -415,10 +414,10 @@
     </state>
     <state x="642" y="231" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593546035575" />
     <state x="2723" y="292" key="refactoring.ChangeSignatureDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593134022051" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593344365977">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1593559209579">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1592537528982" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1593559209579" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1593344365977" />
   </component>
   <component name="XDebuggerManager">
@@ -829,11 +828,6 @@
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>225</line>
-          <option name="timeStamp" value="202" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/test/soln.py</url>
           <line>320</line>
           <option name="timeStamp" value="207" />
@@ -884,21 +878,6 @@
           <option name="timeStamp" value="232" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="244" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>92</line>
-          <option name="timeStamp" value="245" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="252" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/arron_soln.py</url>
           <line>195</line>
           <option name="timeStamp" value="253" />
@@ -910,12 +889,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>290</line>
-          <option name="timeStamp" value="257" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>292</line>
+          <line>285</line>
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -932,16 +906,6 @@
           <url>file://$PROJECT_DIR$/Assignment_4/arron_soln.py</url>
           <line>391</line>
           <option name="timeStamp" value="270" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>279</line>
-          <option name="timeStamp" value="271" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Assignment_4/task2.py</url>
-          <line>286</line>
-          <option name="timeStamp" value="272" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Assignment_4/arron_soln.py</url>
