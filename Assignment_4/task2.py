@@ -7,6 +7,7 @@ import time
 from pyspark import SparkContext, SparkConf
 import random
 
+
 def write_results(result, output_file):
     with open(output_file, 'w') as result_file:
         result_file.write('\n'.join([str(edge_score)[1:-1] for edge_score in result]))
@@ -94,36 +95,72 @@ def get_GN_betweeness_scores(**kwargs):
 
 def get_current_communities(**kwargs):
     vertices = kwargs.get('vertices')
+    edge_betweenness_scores = kwargs['edge_betweenness_scores']
     adjacency_map_dict = kwargs['adjacency_map_dict']
+    edges = kwargs['edges']
 
-    communities = list()  # result will be return
-    need2visit = list()  # a stack actually
-    temp_node_set = set()  # using to save each communities
-    visited = set()  # track which node has been visited
+    # removing the edge with the highest betweeness scores
+    removed_edge = edge_betweenness_scores[0][0]
+    try:
+        adjacency_map[removed_edge[0]].remove(removed_edge[1])
 
-    # random pick a root to detect communities
+    except:
+        pass
+
+    try:
+        adjacency_map[removed_edge[1]].remove(removed_edge[0])
+
+    except:
+        pass
+
+    # find communities after removing the edge in the previous step
+    current_coms = []
+    traversal_stack = []
+    traversal_order_set = set()
+    nodes_visited = set()
+
     random_root = vertices[random.randint(0, len(vertices) - 1)]
-    temp_node_set.add(random_root)
-    need2visit.append(random_root)
-    # if still has some node we haven't visit, do the loop
-    while len(visited) != len(vertices):
-        while len(need2visit) > 0:
-            parent_node = need2visit.pop(0)
-            temp_node_set.add(parent_node)
-            visited.add(parent_node)
-            for children in adjacency_map_dict[parent_node]:
-                if children not in visited:
-                    temp_node_set.add(children)
-                    need2visit.append(children)
-                    visited.add(children)
+    traversal_order_set.add(random_root)
+    traversal_stack.append(random_root)
 
-        communities.append(sorted(temp_node_set))
-        temp_node_set = set()
-        if len(vertices) > len(visited):
+    while len(nodes_visited) != len(vertices):
+        while len(traversal_stack) > 0:
+            immediate_parent = traversal_stack.pop(0)
+            traversal_order_set.add(immediate_parent)
+            nodes_visited.add(immediate_parent)
+            for children in adjacency_map_dict[immediate_parent]:
+                if children not in nodes_visited:
+                    traversal_order_set.add(children)
+                    traversal_stack.append(children)
+                    nodes_visited.add(children)
+
+        current_coms.append(sorted(traversal_order_set))
+        traversal_order_set = set()
+        if len(vertices) > len(nodes_visited):
             # pick one from rest of unvisited nodes
-            need2visit.append(set(vertices).difference(visited).pop())
+            traversal_stack.append(set(vertices).difference(nodes_visited).pop())
 
-    return communities
+    # calculate modularity
+    mod_sum = 0
+    for cluster in current_coms:
+        for vertex_pair in itertools.combinations(list(cluster), 2):
+            mod_sum += (
+                    (
+                        1 if sorted(
+                            [vertex_pair[0], vertex_pair[1]]
+                        ) in edges else 0
+                    ) - (
+                            len(
+                                adjacency_map_dict[vertex_pair[0]]
+                            ) * len(
+                                    adjacency_map_dict[vertex_pair[1]]
+                            ) / (
+                                    2 * len(vertices)
+                            )
+                    )
+            )
+
+    return adjacency_map_dict, mod_sum / (2 * len(vertices)), current_coms
 
 
 def find_communities(**kwargs):
@@ -134,43 +171,37 @@ def find_communities(**kwargs):
     modularity = float("-inf")
     communities = []
 
+    if edge_betweenness_scores:
+        adjacency_map_dict, current_modularity, current_communities = get_current_communities(
+            edge_betweenness_scores=edge_betweenness_scores,
+            vertices=vertices,
+            adjacency_map_dict=adjacency_map_dict,
+            edges=edges
+        )
+
+        edge_betweenness_scores = get_GN_betweeness_scores(
+            vertices=vertices,
+            adjacency_map_dict=adjacency_map_dict
+        )
+
     while True:
-        if edge_betweenness_scores:
-            removed_edge = edge_betweenness_scores.pop(0)[0]
-            try:
-                adjacency_map[removed_edge[0]].remove(removed_edge[1])
+        # cut edges with highest betweenness
+        adjacency_map_dict, current_modularity, current_communities = get_current_communities(
+            edge_betweenness_scores=edge_betweenness_scores,
+            vertices=vertices,
+            adjacency_map_dict=adjacency_map_dict,
+            edges=edges
+        )
+        edge_betweenness_scores = get_GN_betweeness_scores(
+            vertices=vertices,
+            adjacency_map_dict=adjacency_map_dict
+        )
 
-            except:
-                pass
+        if current_modularity < modularity:
+            break
 
-            try:
-                adjacency_map[removed_edge[1]].remove(removed_edge[0])
-
-            except:
-                pass
-
-            current_communities = get_current_communities(
-                vertices=vertices,
-                adjacency_map_dict=adjacency_map_dict
-            )
-
-            sum_mod = 0
-            for com in current_communities:
-                sum_mod += sum(
-                    [
-                        (1 if tuple(sorted([pair[0], pair[1]])) in edges else 0) -
-                        (len(adjacency_map_dict[pair[0]]) * len(adjacency_map_dict[pair[1]]) / (2 * len(edges)))
-                        for pair in itertools.combinations(list(com), 2)
-                    ]
-                )
-
-            current_modularity = sum_mod / (2 * len(edges))
-
-            if current_modularity < modularity:
-                break
-
-            communities = current_communities
-            modularity = current_modularity
+        communities = current_communities
+        modularity = current_modularity
 
     return sorted(
         communities,
